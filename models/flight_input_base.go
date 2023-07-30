@@ -25,13 +25,11 @@ type FlightInputBase struct {
 
 	// The end value of the aircraft counter. If provided, AircraftCounterStart must also be provided. The time between AircraftCounterStart and AircraftCounterEnd must be less than the flight time and equal to the airborne time if it is provided
 	// Pattern: ^\d{1-5}:[0-5][0-9]$
-	// Format: duration
-	AircraftCounterEnd strfmt.Duration `json:"AircraftCounterEnd,omitempty"`
+	AircraftCounterEnd string `json:"AircraftCounterEnd,omitempty"`
 
 	// The start value of the aircraft counter. If provided, AircraftCounterEnd must also be provided. The time between AircraftCounterStart and AircraftCounterEnd must be less than the flight time and equal to the airborne time if it is provided
 	// Pattern: ^\d{1-5}:[0-5][0-9]$
-	// Format: duration
-	AircraftCounterStart strfmt.Duration `json:"AircraftCounterStart,omitempty"`
+	AircraftCounterStart string `json:"AircraftCounterStart,omitempty"`
 
 	// are times local
 	// Required: true
@@ -47,20 +45,17 @@ type FlightInputBase struct {
 
 	// change i f r to v f r time
 	// Pattern: ^([0-1][0-9]|2[0-3]):[0-5][0-9]$
-	// Format: duration
-	ChangeIFRToVFRTime strfmt.Duration `json:"ChangeIFRToVFRTime,omitempty"`
+	ChangeIFRToVFRTime string `json:"ChangeIFRToVFRTime,omitempty"`
 
 	// change v f r to i f r time
 	// Pattern: ^([0-1][0-9]|2[0-3]):[0-5][0-9]$
-	// Format: duration
-	ChangeVFRToIFRTime strfmt.Duration `json:"ChangeVFRToIFRTime,omitempty"`
+	ChangeVFRToIFRTime string `json:"ChangeVFRToIFRTime,omitempty"`
 
 	// date
 	// Required: true
 	// Min Length: 1
 	// Pattern: ^\d{4}\-(0[1-9]|1[0-2])\-(0[1-9]|[1-2][0-9]|3[0-1])$
-	// Format: date-time
-	Date *strfmt.DateTime `json:"Date"`
+	Date *string `json:"Date"`
 
 	// The day/night sequence of the flight. Required if AutoCalculateDayNightTime is false
 	DayNightSequence struct {
@@ -73,8 +68,7 @@ type FlightInputBase struct {
 
 	// evening twilight time
 	// Pattern: ^([0-1][0-9]|2[0-3]):[0-5][0-9]$
-	// Format: duration
-	EveningTwilightTime strfmt.Duration `json:"EveningTwilightTime,omitempty"`
+	EveningTwilightTime string `json:"EveningTwilightTime,omitempty"`
 
 	// i f r approaches
 	// Required: true
@@ -93,8 +87,7 @@ type FlightInputBase struct {
 
 	// landing time
 	// Pattern: ^([0-1][0-9]|2[0-3]):[0-5][0-9]$
-	// Format: duration
-	LandingTime strfmt.Duration `json:"LandingTime,omitempty"`
+	LandingTime string `json:"LandingTime,omitempty"`
 
 	// landings
 	// Required: true
@@ -107,8 +100,7 @@ type FlightInputBase struct {
 
 	// morning twilight time
 	// Pattern: ^([0-1][0-9]|2[0-3]):[0-5][0-9]$
-	// Format: duration
-	MorningTwilightTime strfmt.Duration `json:"MorningTwilightTime,omitempty"`
+	MorningTwilightTime string `json:"MorningTwilightTime,omitempty"`
 
 	// night landings
 	// Required: true
@@ -126,15 +118,13 @@ type FlightInputBase struct {
 	// Required: true
 	// Min Length: 1
 	// Pattern: ^([0-1][0-9]|2[0-3]):[0-5][0-9]$
-	// Format: duration
-	OffBlockTime *strfmt.Duration `json:"OffBlockTime"`
+	OffBlockTime *string `json:"OffBlockTime"`
 
 	// on block time
 	// Required: true
 	// Min Length: 1
 	// Pattern: ^([0-1][0-9]|2[0-3]):[0-5][0-9]$
-	// Format: duration
-	OnBlockTime *strfmt.Duration `json:"OnBlockTime"`
+	OnBlockTime *string `json:"OnBlockTime"`
 
 	// p i c name
 	// Required: true
@@ -150,8 +140,7 @@ type FlightInputBase struct {
 
 	// takeoff time
 	// Pattern: ^([0-1][0-9]|2[0-3]):[0-5][0-9]$
-	// Format: duration
-	TakeoffTime strfmt.Duration `json:"TakeoffTime,omitempty"`
+	TakeoffTime string `json:"TakeoffTime,omitempty"`
 
 	// takeoffs
 	// Required: true
@@ -306,11 +295,7 @@ func (m *FlightInputBase) validateAircraftCounterEnd(formats strfmt.Registry) er
 		return nil
 	}
 
-	if err := validate.Pattern("AircraftCounterEnd", "body", m.AircraftCounterEnd.String(), `^\d{1-5}:[0-5][0-9]$`); err != nil {
-		return err
-	}
-
-	if err := validate.FormatOf("AircraftCounterEnd", "body", "duration", m.AircraftCounterEnd.String(), formats); err != nil {
+	if err := validate.Pattern("AircraftCounterEnd", "body", m.AircraftCounterEnd, `^\d{1-5}:[0-5][0-9]$`); err != nil {
 		return err
 	}
 
@@ -322,11 +307,7 @@ func (m *FlightInputBase) validateAircraftCounterStart(formats strfmt.Registry) 
 		return nil
 	}
 
-	if err := validate.Pattern("AircraftCounterStart", "body", m.AircraftCounterStart.String(), `^\d{1-5}:[0-5][0-9]$`); err != nil {
-		return err
-	}
-
-	if err := validate.FormatOf("AircraftCounterStart", "body", "duration", m.AircraftCounterStart.String(), formats); err != nil {
+	if err := validate.Pattern("AircraftCounterStart", "body", m.AircraftCounterStart, `^\d{1-5}:[0-5][0-9]$`); err != nil {
 		return err
 	}
 
@@ -376,11 +357,7 @@ func (m *FlightInputBase) validateChangeIFRToVFRTime(formats strfmt.Registry) er
 		return nil
 	}
 
-	if err := validate.Pattern("ChangeIFRToVFRTime", "body", m.ChangeIFRToVFRTime.String(), `^([0-1][0-9]|2[0-3]):[0-5][0-9]$`); err != nil {
-		return err
-	}
-
-	if err := validate.FormatOf("ChangeIFRToVFRTime", "body", "duration", m.ChangeIFRToVFRTime.String(), formats); err != nil {
+	if err := validate.Pattern("ChangeIFRToVFRTime", "body", m.ChangeIFRToVFRTime, `^([0-1][0-9]|2[0-3]):[0-5][0-9]$`); err != nil {
 		return err
 	}
 
@@ -392,11 +369,7 @@ func (m *FlightInputBase) validateChangeVFRToIFRTime(formats strfmt.Registry) er
 		return nil
 	}
 
-	if err := validate.Pattern("ChangeVFRToIFRTime", "body", m.ChangeVFRToIFRTime.String(), `^([0-1][0-9]|2[0-3]):[0-5][0-9]$`); err != nil {
-		return err
-	}
-
-	if err := validate.FormatOf("ChangeVFRToIFRTime", "body", "duration", m.ChangeVFRToIFRTime.String(), formats); err != nil {
+	if err := validate.Pattern("ChangeVFRToIFRTime", "body", m.ChangeVFRToIFRTime, `^([0-1][0-9]|2[0-3]):[0-5][0-9]$`); err != nil {
 		return err
 	}
 
@@ -409,15 +382,11 @@ func (m *FlightInputBase) validateDate(formats strfmt.Registry) error {
 		return err
 	}
 
-	if err := validate.MinLength("Date", "body", m.Date.String(), 1); err != nil {
+	if err := validate.MinLength("Date", "body", *m.Date, 1); err != nil {
 		return err
 	}
 
-	if err := validate.Pattern("Date", "body", m.Date.String(), `^\d{4}\-(0[1-9]|1[0-2])\-(0[1-9]|[1-2][0-9]|3[0-1])$`); err != nil {
-		return err
-	}
-
-	if err := validate.FormatOf("Date", "body", "date-time", m.Date.String(), formats); err != nil {
+	if err := validate.Pattern("Date", "body", *m.Date, `^\d{4}\-(0[1-9]|1[0-2])\-(0[1-9]|[1-2][0-9]|3[0-1])$`); err != nil {
 		return err
 	}
 
@@ -457,11 +426,7 @@ func (m *FlightInputBase) validateEveningTwilightTime(formats strfmt.Registry) e
 		return nil
 	}
 
-	if err := validate.Pattern("EveningTwilightTime", "body", m.EveningTwilightTime.String(), `^([0-1][0-9]|2[0-3]):[0-5][0-9]$`); err != nil {
-		return err
-	}
-
-	if err := validate.FormatOf("EveningTwilightTime", "body", "duration", m.EveningTwilightTime.String(), formats); err != nil {
+	if err := validate.Pattern("EveningTwilightTime", "body", m.EveningTwilightTime, `^([0-1][0-9]|2[0-3]):[0-5][0-9]$`); err != nil {
 		return err
 	}
 
@@ -507,11 +472,7 @@ func (m *FlightInputBase) validateLandingTime(formats strfmt.Registry) error {
 		return nil
 	}
 
-	if err := validate.Pattern("LandingTime", "body", m.LandingTime.String(), `^([0-1][0-9]|2[0-3]):[0-5][0-9]$`); err != nil {
-		return err
-	}
-
-	if err := validate.FormatOf("LandingTime", "body", "duration", m.LandingTime.String(), formats); err != nil {
+	if err := validate.Pattern("LandingTime", "body", m.LandingTime, `^([0-1][0-9]|2[0-3]):[0-5][0-9]$`); err != nil {
 		return err
 	}
 
@@ -566,11 +527,7 @@ func (m *FlightInputBase) validateMorningTwilightTime(formats strfmt.Registry) e
 		return nil
 	}
 
-	if err := validate.Pattern("MorningTwilightTime", "body", m.MorningTwilightTime.String(), `^([0-1][0-9]|2[0-3]):[0-5][0-9]$`); err != nil {
-		return err
-	}
-
-	if err := validate.FormatOf("MorningTwilightTime", "body", "duration", m.MorningTwilightTime.String(), formats); err != nil {
+	if err := validate.Pattern("MorningTwilightTime", "body", m.MorningTwilightTime, `^([0-1][0-9]|2[0-3]):[0-5][0-9]$`); err != nil {
 		return err
 	}
 
@@ -617,15 +574,11 @@ func (m *FlightInputBase) validateOffBlockTime(formats strfmt.Registry) error {
 		return err
 	}
 
-	if err := validate.MinLength("OffBlockTime", "body", m.OffBlockTime.String(), 1); err != nil {
+	if err := validate.MinLength("OffBlockTime", "body", *m.OffBlockTime, 1); err != nil {
 		return err
 	}
 
-	if err := validate.Pattern("OffBlockTime", "body", m.OffBlockTime.String(), `^([0-1][0-9]|2[0-3]):[0-5][0-9]$`); err != nil {
-		return err
-	}
-
-	if err := validate.FormatOf("OffBlockTime", "body", "duration", m.OffBlockTime.String(), formats); err != nil {
+	if err := validate.Pattern("OffBlockTime", "body", *m.OffBlockTime, `^([0-1][0-9]|2[0-3]):[0-5][0-9]$`); err != nil {
 		return err
 	}
 
@@ -638,15 +591,11 @@ func (m *FlightInputBase) validateOnBlockTime(formats strfmt.Registry) error {
 		return err
 	}
 
-	if err := validate.MinLength("OnBlockTime", "body", m.OnBlockTime.String(), 1); err != nil {
+	if err := validate.MinLength("OnBlockTime", "body", *m.OnBlockTime, 1); err != nil {
 		return err
 	}
 
-	if err := validate.Pattern("OnBlockTime", "body", m.OnBlockTime.String(), `^([0-1][0-9]|2[0-3]):[0-5][0-9]$`); err != nil {
-		return err
-	}
-
-	if err := validate.FormatOf("OnBlockTime", "body", "duration", m.OnBlockTime.String(), formats); err != nil {
+	if err := validate.Pattern("OnBlockTime", "body", *m.OnBlockTime, `^([0-1][0-9]|2[0-3]):[0-5][0-9]$`); err != nil {
 		return err
 	}
 
@@ -695,11 +644,7 @@ func (m *FlightInputBase) validateTakeoffTime(formats strfmt.Registry) error {
 		return nil
 	}
 
-	if err := validate.Pattern("TakeoffTime", "body", m.TakeoffTime.String(), `^([0-1][0-9]|2[0-3]):[0-5][0-9]$`); err != nil {
-		return err
-	}
-
-	if err := validate.FormatOf("TakeoffTime", "body", "duration", m.TakeoffTime.String(), formats); err != nil {
+	if err := validate.Pattern("TakeoffTime", "body", m.TakeoffTime, `^([0-1][0-9]|2[0-3]):[0-5][0-9]$`); err != nil {
 		return err
 	}
 

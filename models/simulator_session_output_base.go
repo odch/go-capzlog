@@ -24,8 +24,7 @@ type SimulatorSessionOutputBase struct {
 	// Required: true
 	// Min Length: 1
 	// Pattern: ^\d{4}\-(0[1-9]|1[0-2])\-(0[1-9]|[1-2][0-9]|3[0-1])$
-	// Format: date-time
-	Date *strfmt.DateTime `json:"Date"`
+	Date *string `json:"Date"`
 
 	// day landings
 	// Required: true
@@ -52,8 +51,7 @@ type SimulatorSessionOutputBase struct {
 	// Required: true
 	// Min Length: 1
 	// Pattern: ^\d{1-5}:[0-5][0-9]$
-	// Format: duration
-	MultiEngineTime *strfmt.Duration `json:"MultiEngineTime"`
+	MultiEngineTime *string `json:"MultiEngineTime"`
 
 	// night landings
 	// Required: true
@@ -78,15 +76,13 @@ type SimulatorSessionOutputBase struct {
 	// Required: true
 	// Min Length: 1
 	// Pattern: ^\d{1-5}:[0-5][0-9]$
-	// Format: duration
-	SessionTime *strfmt.Duration `json:"SessionTime"`
+	SessionTime *string `json:"SessionTime"`
 
 	// sfi sfe time
 	// Required: true
 	// Min Length: 1
 	// Pattern: ^\d{1-5}:[0-5][0-9]$
-	// Format: duration
-	SfiSfeTime *strfmt.Duration `json:"SfiSfeTime"`
+	SfiSfeTime *string `json:"SfiSfeTime"`
 
 	// simulator
 	Simulator *SimulatorOutput `json:"Simulator,omitempty"`
@@ -95,8 +91,7 @@ type SimulatorSessionOutputBase struct {
 	// Required: true
 	// Min Length: 1
 	// Pattern: ^\d{1-5}:[0-5][0-9]$
-	// Format: duration
-	SingleEngineTime *strfmt.Duration `json:"SingleEngineTime"`
+	SingleEngineTime *string `json:"SingleEngineTime"`
 
 	// status
 	// Required: true
@@ -112,8 +107,7 @@ type SimulatorSessionOutputBase struct {
 	// Required: true
 	// Min Length: 1
 	// Pattern: ^\d{1-5}:[0-5][0-9]$
-	// Format: duration
-	TraineeTime *strfmt.Duration `json:"TraineeTime"`
+	TraineeTime *string `json:"TraineeTime"`
 }
 
 // Validate validates this simulator session output base
@@ -196,15 +190,11 @@ func (m *SimulatorSessionOutputBase) validateDate(formats strfmt.Registry) error
 		return err
 	}
 
-	if err := validate.MinLength("Date", "body", m.Date.String(), 1); err != nil {
+	if err := validate.MinLength("Date", "body", *m.Date, 1); err != nil {
 		return err
 	}
 
-	if err := validate.Pattern("Date", "body", m.Date.String(), `^\d{4}\-(0[1-9]|1[0-2])\-(0[1-9]|[1-2][0-9]|3[0-1])$`); err != nil {
-		return err
-	}
-
-	if err := validate.FormatOf("Date", "body", "date-time", m.Date.String(), formats); err != nil {
+	if err := validate.Pattern("Date", "body", *m.Date, `^\d{4}\-(0[1-9]|1[0-2])\-(0[1-9]|[1-2][0-9]|3[0-1])$`); err != nil {
 		return err
 	}
 
@@ -294,15 +284,11 @@ func (m *SimulatorSessionOutputBase) validateMultiEngineTime(formats strfmt.Regi
 		return err
 	}
 
-	if err := validate.MinLength("MultiEngineTime", "body", m.MultiEngineTime.String(), 1); err != nil {
+	if err := validate.MinLength("MultiEngineTime", "body", *m.MultiEngineTime, 1); err != nil {
 		return err
 	}
 
-	if err := validate.Pattern("MultiEngineTime", "body", m.MultiEngineTime.String(), `^\d{1-5}:[0-5][0-9]$`); err != nil {
-		return err
-	}
-
-	if err := validate.FormatOf("MultiEngineTime", "body", "duration", m.MultiEngineTime.String(), formats); err != nil {
+	if err := validate.Pattern("MultiEngineTime", "body", *m.MultiEngineTime, `^\d{1-5}:[0-5][0-9]$`); err != nil {
 		return err
 	}
 
@@ -373,15 +359,11 @@ func (m *SimulatorSessionOutputBase) validateSessionTime(formats strfmt.Registry
 		return err
 	}
 
-	if err := validate.MinLength("SessionTime", "body", m.SessionTime.String(), 1); err != nil {
+	if err := validate.MinLength("SessionTime", "body", *m.SessionTime, 1); err != nil {
 		return err
 	}
 
-	if err := validate.Pattern("SessionTime", "body", m.SessionTime.String(), `^\d{1-5}:[0-5][0-9]$`); err != nil {
-		return err
-	}
-
-	if err := validate.FormatOf("SessionTime", "body", "duration", m.SessionTime.String(), formats); err != nil {
+	if err := validate.Pattern("SessionTime", "body", *m.SessionTime, `^\d{1-5}:[0-5][0-9]$`); err != nil {
 		return err
 	}
 
@@ -394,15 +376,11 @@ func (m *SimulatorSessionOutputBase) validateSfiSfeTime(formats strfmt.Registry)
 		return err
 	}
 
-	if err := validate.MinLength("SfiSfeTime", "body", m.SfiSfeTime.String(), 1); err != nil {
+	if err := validate.MinLength("SfiSfeTime", "body", *m.SfiSfeTime, 1); err != nil {
 		return err
 	}
 
-	if err := validate.Pattern("SfiSfeTime", "body", m.SfiSfeTime.String(), `^\d{1-5}:[0-5][0-9]$`); err != nil {
-		return err
-	}
-
-	if err := validate.FormatOf("SfiSfeTime", "body", "duration", m.SfiSfeTime.String(), formats); err != nil {
+	if err := validate.Pattern("SfiSfeTime", "body", *m.SfiSfeTime, `^\d{1-5}:[0-5][0-9]$`); err != nil {
 		return err
 	}
 
@@ -434,15 +412,11 @@ func (m *SimulatorSessionOutputBase) validateSingleEngineTime(formats strfmt.Reg
 		return err
 	}
 
-	if err := validate.MinLength("SingleEngineTime", "body", m.SingleEngineTime.String(), 1); err != nil {
+	if err := validate.MinLength("SingleEngineTime", "body", *m.SingleEngineTime, 1); err != nil {
 		return err
 	}
 
-	if err := validate.Pattern("SingleEngineTime", "body", m.SingleEngineTime.String(), `^\d{1-5}:[0-5][0-9]$`); err != nil {
-		return err
-	}
-
-	if err := validate.FormatOf("SingleEngineTime", "body", "duration", m.SingleEngineTime.String(), formats); err != nil {
+	if err := validate.Pattern("SingleEngineTime", "body", *m.SingleEngineTime, `^\d{1-5}:[0-5][0-9]$`); err != nil {
 		return err
 	}
 
@@ -496,15 +470,11 @@ func (m *SimulatorSessionOutputBase) validateTraineeTime(formats strfmt.Registry
 		return err
 	}
 
-	if err := validate.MinLength("TraineeTime", "body", m.TraineeTime.String(), 1); err != nil {
+	if err := validate.MinLength("TraineeTime", "body", *m.TraineeTime, 1); err != nil {
 		return err
 	}
 
-	if err := validate.Pattern("TraineeTime", "body", m.TraineeTime.String(), `^\d{1-5}:[0-5][0-9]$`); err != nil {
-		return err
-	}
-
-	if err := validate.FormatOf("TraineeTime", "body", "duration", m.TraineeTime.String(), formats); err != nil {
+	if err := validate.Pattern("TraineeTime", "body", *m.TraineeTime, `^\d{1-5}:[0-5][0-9]$`); err != nil {
 		return err
 	}
 

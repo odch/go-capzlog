@@ -24,21 +24,18 @@ type FlightOutputBase struct {
 	// Required: true
 	// Min Length: 1
 	// Pattern: ^\d{1-5}:[0-5][0-9]$
-	// Format: duration
-	AirborneTime *strfmt.Duration `json:"AirborneTime"`
+	AirborneTime *string `json:"AirborneTime"`
 
 	// aircraft
 	Aircraft *AircraftOutput `json:"Aircraft,omitempty"`
 
 	// The end value of the aircraft counter. If provided, AircraftCounterStart must also be provided. The time between AircraftCounterStart and AircraftCounterEnd must be less than the flight time and equal to the airborne time if it is provided
 	// Pattern: ^\d{1-5}:[0-5][0-9]$
-	// Format: duration
-	AircraftCounterEnd strfmt.Duration `json:"AircraftCounterEnd,omitempty"`
+	AircraftCounterEnd string `json:"AircraftCounterEnd,omitempty"`
 
 	// The start value of the aircraft counter. If provided, AircraftCounterEnd must also be provided. The time between AircraftCounterStart and AircraftCounterEnd must be less than the flight time and equal to the airborne time if it is provided
 	// Pattern: ^\d{1-5}:[0-5][0-9]$
-	// Format: duration
-	AircraftCounterStart strfmt.Duration `json:"AircraftCounterStart,omitempty"`
+	AircraftCounterStart string `json:"AircraftCounterStart,omitempty"`
 
 	// are times local
 	// Required: true
@@ -50,27 +47,23 @@ type FlightOutputBase struct {
 
 	// change i f r to v f r time
 	// Pattern: ^([0-1][0-9]|2[0-3]):[0-5][0-9]$
-	// Format: duration
-	ChangeIFRToVFRTime strfmt.Duration `json:"ChangeIFRToVFRTime,omitempty"`
+	ChangeIFRToVFRTime string `json:"ChangeIFRToVFRTime,omitempty"`
 
 	// change v f r to i f r time
 	// Pattern: ^([0-1][0-9]|2[0-3]):[0-5][0-9]$
-	// Format: duration
-	ChangeVFRToIFRTime strfmt.Duration `json:"ChangeVFRToIFRTime,omitempty"`
+	ChangeVFRToIFRTime string `json:"ChangeVFRToIFRTime,omitempty"`
 
 	// copi time
 	// Required: true
 	// Min Length: 1
 	// Pattern: ^\d{1-5}:[0-5][0-9]$
-	// Format: duration
-	CopiTime *strfmt.Duration `json:"CopiTime"`
+	CopiTime *string `json:"CopiTime"`
 
 	// date
 	// Required: true
 	// Min Length: 1
 	// Pattern: ^\d{4}\-(0[1-9]|1[0-2])\-(0[1-9]|[1-2][0-9]|3[0-1])$
-	// Format: date-time
-	Date *strfmt.DateTime `json:"Date"`
+	Date *string `json:"Date"`
 
 	// day landings
 	// Required: true
@@ -92,8 +85,7 @@ type FlightOutputBase struct {
 	// Required: true
 	// Min Length: 1
 	// Pattern: ^\d{1-5}:[0-5][0-9]$
-	// Format: duration
-	DayTime *strfmt.Duration `json:"DayTime"`
+	DayTime *string `json:"DayTime"`
 
 	// departure airport
 	// Required: true
@@ -103,20 +95,17 @@ type FlightOutputBase struct {
 	// Required: true
 	// Min Length: 1
 	// Pattern: ^\d{1-5}:[0-5][0-9]$
-	// Format: duration
-	DualTime *strfmt.Duration `json:"DualTime"`
+	DualTime *string `json:"DualTime"`
 
 	// evening twilight time
 	// Pattern: ^([0-1][0-9]|2[0-3]):[0-5][0-9]$
-	// Format: duration
-	EveningTwilightTime strfmt.Duration `json:"EveningTwilightTime,omitempty"`
+	EveningTwilightTime string `json:"EveningTwilightTime,omitempty"`
 
 	// flight time
 	// Required: true
 	// Min Length: 1
 	// Pattern: ^\d{1-5}:[0-5][0-9]$
-	// Format: duration
-	FlightTime *strfmt.Duration `json:"FlightTime"`
+	FlightTime *string `json:"FlightTime"`
 
 	// i f r approaches
 	// Required: true
@@ -134,38 +123,33 @@ type FlightOutputBase struct {
 	// Required: true
 	// Min Length: 1
 	// Pattern: ^\d{1-5}:[0-5][0-9]$
-	// Format: duration
-	IFRTime *strfmt.Duration `json:"IFRTime"`
+	IFRTime *string `json:"IFRTime"`
 
 	// instructor time
 	// Required: true
 	// Min Length: 1
 	// Pattern: ^\d{1-5}:[0-5][0-9]$
-	// Format: duration
-	InstructorTime *strfmt.Duration `json:"InstructorTime"`
+	InstructorTime *string `json:"InstructorTime"`
 
 	// Used to specify if the flight is single pilot or multi pilot operation. Considered only for aircraft that can be flown both single and multi pilot
 	IsMultiPilot bool `json:"IsMultiPilot,omitempty"`
 
 	// landing time
 	// Pattern: ^([0-1][0-9]|2[0-3]):[0-5][0-9]$
-	// Format: duration
-	LandingTime strfmt.Duration `json:"LandingTime,omitempty"`
+	LandingTime string `json:"LandingTime,omitempty"`
 
 	// markers
 	Markers []*Marker `json:"Markers"`
 
 	// morning twilight time
 	// Pattern: ^([0-1][0-9]|2[0-3]):[0-5][0-9]$
-	// Format: duration
-	MorningTwilightTime strfmt.Duration `json:"MorningTwilightTime,omitempty"`
+	MorningTwilightTime string `json:"MorningTwilightTime,omitempty"`
 
 	// multi pilot time
 	// Required: true
 	// Min Length: 1
 	// Pattern: ^\d{1-5}:[0-5][0-9]$
-	// Format: duration
-	MultiPilotTime *strfmt.Duration `json:"MultiPilotTime"`
+	MultiPilotTime *string `json:"MultiPilotTime"`
 
 	// night landings
 	// Required: true
@@ -183,22 +167,19 @@ type FlightOutputBase struct {
 	// Required: true
 	// Min Length: 1
 	// Pattern: ^\d{1-5}:[0-5][0-9]$
-	// Format: duration
-	NightTime *strfmt.Duration `json:"NightTime"`
+	NightTime *string `json:"NightTime"`
 
 	// off block time
 	// Required: true
 	// Min Length: 1
 	// Pattern: ^([0-1][0-9]|2[0-3]):[0-5][0-9]$
-	// Format: duration
-	OffBlockTime *strfmt.Duration `json:"OffBlockTime"`
+	OffBlockTime *string `json:"OffBlockTime"`
 
 	// on block time
 	// Required: true
 	// Min Length: 1
 	// Pattern: ^([0-1][0-9]|2[0-3]):[0-5][0-9]$
-	// Format: duration
-	OnBlockTime *strfmt.Duration `json:"OnBlockTime"`
+	OnBlockTime *string `json:"OnBlockTime"`
 
 	// p i c name
 	// Required: true
@@ -209,8 +190,7 @@ type FlightOutputBase struct {
 	// Required: true
 	// Min Length: 1
 	// Pattern: ^\d{1-5}:[0-5][0-9]$
-	// Format: duration
-	PICTime *strfmt.Duration `json:"PICTime"`
+	PICTime *string `json:"PICTime"`
 
 	// pilot function
 	// Required: true
@@ -223,15 +203,13 @@ type FlightOutputBase struct {
 	// Required: true
 	// Min Length: 1
 	// Pattern: ^\d{1-5}:[0-5][0-9]$
-	// Format: duration
-	SinglePilotMultiEngineTime *strfmt.Duration `json:"SinglePilotMultiEngineTime"`
+	SinglePilotMultiEngineTime *string `json:"SinglePilotMultiEngineTime"`
 
 	// single pilot single engine time
 	// Required: true
 	// Min Length: 1
 	// Pattern: ^\d{1-5}:[0-5][0-9]$
-	// Format: duration
-	SinglePilotSingleEngineTime *strfmt.Duration `json:"SinglePilotSingleEngineTime"`
+	SinglePilotSingleEngineTime *string `json:"SinglePilotSingleEngineTime"`
 
 	// status
 	// Required: true
@@ -239,8 +217,7 @@ type FlightOutputBase struct {
 
 	// takeoff time
 	// Pattern: ^([0-1][0-9]|2[0-3]):[0-5][0-9]$
-	// Format: duration
-	TakeoffTime strfmt.Duration `json:"TakeoffTime,omitempty"`
+	TakeoffTime string `json:"TakeoffTime,omitempty"`
 
 	// type of flight
 	// Required: true
@@ -250,8 +227,7 @@ type FlightOutputBase struct {
 	// Required: true
 	// Min Length: 1
 	// Pattern: ^\d{1-5}:[0-5][0-9]$
-	// Format: duration
-	VFRTime *strfmt.Duration `json:"VFRTime"`
+	VFRTime *string `json:"VFRTime"`
 }
 
 // Validate validates this flight output base
@@ -430,15 +406,11 @@ func (m *FlightOutputBase) validateAirborneTime(formats strfmt.Registry) error {
 		return err
 	}
 
-	if err := validate.MinLength("AirborneTime", "body", m.AirborneTime.String(), 1); err != nil {
+	if err := validate.MinLength("AirborneTime", "body", *m.AirborneTime, 1); err != nil {
 		return err
 	}
 
-	if err := validate.Pattern("AirborneTime", "body", m.AirborneTime.String(), `^\d{1-5}:[0-5][0-9]$`); err != nil {
-		return err
-	}
-
-	if err := validate.FormatOf("AirborneTime", "body", "duration", m.AirborneTime.String(), formats); err != nil {
+	if err := validate.Pattern("AirborneTime", "body", *m.AirborneTime, `^\d{1-5}:[0-5][0-9]$`); err != nil {
 		return err
 	}
 
@@ -469,11 +441,7 @@ func (m *FlightOutputBase) validateAircraftCounterEnd(formats strfmt.Registry) e
 		return nil
 	}
 
-	if err := validate.Pattern("AircraftCounterEnd", "body", m.AircraftCounterEnd.String(), `^\d{1-5}:[0-5][0-9]$`); err != nil {
-		return err
-	}
-
-	if err := validate.FormatOf("AircraftCounterEnd", "body", "duration", m.AircraftCounterEnd.String(), formats); err != nil {
+	if err := validate.Pattern("AircraftCounterEnd", "body", m.AircraftCounterEnd, `^\d{1-5}:[0-5][0-9]$`); err != nil {
 		return err
 	}
 
@@ -485,11 +453,7 @@ func (m *FlightOutputBase) validateAircraftCounterStart(formats strfmt.Registry)
 		return nil
 	}
 
-	if err := validate.Pattern("AircraftCounterStart", "body", m.AircraftCounterStart.String(), `^\d{1-5}:[0-5][0-9]$`); err != nil {
-		return err
-	}
-
-	if err := validate.FormatOf("AircraftCounterStart", "body", "duration", m.AircraftCounterStart.String(), formats); err != nil {
+	if err := validate.Pattern("AircraftCounterStart", "body", m.AircraftCounterStart, `^\d{1-5}:[0-5][0-9]$`); err != nil {
 		return err
 	}
 
@@ -530,11 +494,7 @@ func (m *FlightOutputBase) validateChangeIFRToVFRTime(formats strfmt.Registry) e
 		return nil
 	}
 
-	if err := validate.Pattern("ChangeIFRToVFRTime", "body", m.ChangeIFRToVFRTime.String(), `^([0-1][0-9]|2[0-3]):[0-5][0-9]$`); err != nil {
-		return err
-	}
-
-	if err := validate.FormatOf("ChangeIFRToVFRTime", "body", "duration", m.ChangeIFRToVFRTime.String(), formats); err != nil {
+	if err := validate.Pattern("ChangeIFRToVFRTime", "body", m.ChangeIFRToVFRTime, `^([0-1][0-9]|2[0-3]):[0-5][0-9]$`); err != nil {
 		return err
 	}
 
@@ -546,11 +506,7 @@ func (m *FlightOutputBase) validateChangeVFRToIFRTime(formats strfmt.Registry) e
 		return nil
 	}
 
-	if err := validate.Pattern("ChangeVFRToIFRTime", "body", m.ChangeVFRToIFRTime.String(), `^([0-1][0-9]|2[0-3]):[0-5][0-9]$`); err != nil {
-		return err
-	}
-
-	if err := validate.FormatOf("ChangeVFRToIFRTime", "body", "duration", m.ChangeVFRToIFRTime.String(), formats); err != nil {
+	if err := validate.Pattern("ChangeVFRToIFRTime", "body", m.ChangeVFRToIFRTime, `^([0-1][0-9]|2[0-3]):[0-5][0-9]$`); err != nil {
 		return err
 	}
 
@@ -563,15 +519,11 @@ func (m *FlightOutputBase) validateCopiTime(formats strfmt.Registry) error {
 		return err
 	}
 
-	if err := validate.MinLength("CopiTime", "body", m.CopiTime.String(), 1); err != nil {
+	if err := validate.MinLength("CopiTime", "body", *m.CopiTime, 1); err != nil {
 		return err
 	}
 
-	if err := validate.Pattern("CopiTime", "body", m.CopiTime.String(), `^\d{1-5}:[0-5][0-9]$`); err != nil {
-		return err
-	}
-
-	if err := validate.FormatOf("CopiTime", "body", "duration", m.CopiTime.String(), formats); err != nil {
+	if err := validate.Pattern("CopiTime", "body", *m.CopiTime, `^\d{1-5}:[0-5][0-9]$`); err != nil {
 		return err
 	}
 
@@ -584,15 +536,11 @@ func (m *FlightOutputBase) validateDate(formats strfmt.Registry) error {
 		return err
 	}
 
-	if err := validate.MinLength("Date", "body", m.Date.String(), 1); err != nil {
+	if err := validate.MinLength("Date", "body", *m.Date, 1); err != nil {
 		return err
 	}
 
-	if err := validate.Pattern("Date", "body", m.Date.String(), `^\d{4}\-(0[1-9]|1[0-2])\-(0[1-9]|[1-2][0-9]|3[0-1])$`); err != nil {
-		return err
-	}
-
-	if err := validate.FormatOf("Date", "body", "date-time", m.Date.String(), formats); err != nil {
+	if err := validate.Pattern("Date", "body", *m.Date, `^\d{4}\-(0[1-9]|1[0-2])\-(0[1-9]|[1-2][0-9]|3[0-1])$`); err != nil {
 		return err
 	}
 
@@ -663,15 +611,11 @@ func (m *FlightOutputBase) validateDayTime(formats strfmt.Registry) error {
 		return err
 	}
 
-	if err := validate.MinLength("DayTime", "body", m.DayTime.String(), 1); err != nil {
+	if err := validate.MinLength("DayTime", "body", *m.DayTime, 1); err != nil {
 		return err
 	}
 
-	if err := validate.Pattern("DayTime", "body", m.DayTime.String(), `^\d{1-5}:[0-5][0-9]$`); err != nil {
-		return err
-	}
-
-	if err := validate.FormatOf("DayTime", "body", "duration", m.DayTime.String(), formats); err != nil {
+	if err := validate.Pattern("DayTime", "body", *m.DayTime, `^\d{1-5}:[0-5][0-9]$`); err != nil {
 		return err
 	}
 
@@ -704,15 +648,11 @@ func (m *FlightOutputBase) validateDualTime(formats strfmt.Registry) error {
 		return err
 	}
 
-	if err := validate.MinLength("DualTime", "body", m.DualTime.String(), 1); err != nil {
+	if err := validate.MinLength("DualTime", "body", *m.DualTime, 1); err != nil {
 		return err
 	}
 
-	if err := validate.Pattern("DualTime", "body", m.DualTime.String(), `^\d{1-5}:[0-5][0-9]$`); err != nil {
-		return err
-	}
-
-	if err := validate.FormatOf("DualTime", "body", "duration", m.DualTime.String(), formats); err != nil {
+	if err := validate.Pattern("DualTime", "body", *m.DualTime, `^\d{1-5}:[0-5][0-9]$`); err != nil {
 		return err
 	}
 
@@ -724,11 +664,7 @@ func (m *FlightOutputBase) validateEveningTwilightTime(formats strfmt.Registry) 
 		return nil
 	}
 
-	if err := validate.Pattern("EveningTwilightTime", "body", m.EveningTwilightTime.String(), `^([0-1][0-9]|2[0-3]):[0-5][0-9]$`); err != nil {
-		return err
-	}
-
-	if err := validate.FormatOf("EveningTwilightTime", "body", "duration", m.EveningTwilightTime.String(), formats); err != nil {
+	if err := validate.Pattern("EveningTwilightTime", "body", m.EveningTwilightTime, `^([0-1][0-9]|2[0-3]):[0-5][0-9]$`); err != nil {
 		return err
 	}
 
@@ -741,15 +677,11 @@ func (m *FlightOutputBase) validateFlightTime(formats strfmt.Registry) error {
 		return err
 	}
 
-	if err := validate.MinLength("FlightTime", "body", m.FlightTime.String(), 1); err != nil {
+	if err := validate.MinLength("FlightTime", "body", *m.FlightTime, 1); err != nil {
 		return err
 	}
 
-	if err := validate.Pattern("FlightTime", "body", m.FlightTime.String(), `^\d{1-5}:[0-5][0-9]$`); err != nil {
-		return err
-	}
-
-	if err := validate.FormatOf("FlightTime", "body", "duration", m.FlightTime.String(), formats); err != nil {
+	if err := validate.Pattern("FlightTime", "body", *m.FlightTime, `^\d{1-5}:[0-5][0-9]$`); err != nil {
 		return err
 	}
 
@@ -796,15 +728,11 @@ func (m *FlightOutputBase) validateIFRTime(formats strfmt.Registry) error {
 		return err
 	}
 
-	if err := validate.MinLength("IFRTime", "body", m.IFRTime.String(), 1); err != nil {
+	if err := validate.MinLength("IFRTime", "body", *m.IFRTime, 1); err != nil {
 		return err
 	}
 
-	if err := validate.Pattern("IFRTime", "body", m.IFRTime.String(), `^\d{1-5}:[0-5][0-9]$`); err != nil {
-		return err
-	}
-
-	if err := validate.FormatOf("IFRTime", "body", "duration", m.IFRTime.String(), formats); err != nil {
+	if err := validate.Pattern("IFRTime", "body", *m.IFRTime, `^\d{1-5}:[0-5][0-9]$`); err != nil {
 		return err
 	}
 
@@ -817,15 +745,11 @@ func (m *FlightOutputBase) validateInstructorTime(formats strfmt.Registry) error
 		return err
 	}
 
-	if err := validate.MinLength("InstructorTime", "body", m.InstructorTime.String(), 1); err != nil {
+	if err := validate.MinLength("InstructorTime", "body", *m.InstructorTime, 1); err != nil {
 		return err
 	}
 
-	if err := validate.Pattern("InstructorTime", "body", m.InstructorTime.String(), `^\d{1-5}:[0-5][0-9]$`); err != nil {
-		return err
-	}
-
-	if err := validate.FormatOf("InstructorTime", "body", "duration", m.InstructorTime.String(), formats); err != nil {
+	if err := validate.Pattern("InstructorTime", "body", *m.InstructorTime, `^\d{1-5}:[0-5][0-9]$`); err != nil {
 		return err
 	}
 
@@ -837,11 +761,7 @@ func (m *FlightOutputBase) validateLandingTime(formats strfmt.Registry) error {
 		return nil
 	}
 
-	if err := validate.Pattern("LandingTime", "body", m.LandingTime.String(), `^([0-1][0-9]|2[0-3]):[0-5][0-9]$`); err != nil {
-		return err
-	}
-
-	if err := validate.FormatOf("LandingTime", "body", "duration", m.LandingTime.String(), formats); err != nil {
+	if err := validate.Pattern("LandingTime", "body", m.LandingTime, `^([0-1][0-9]|2[0-3]):[0-5][0-9]$`); err != nil {
 		return err
 	}
 
@@ -879,11 +799,7 @@ func (m *FlightOutputBase) validateMorningTwilightTime(formats strfmt.Registry) 
 		return nil
 	}
 
-	if err := validate.Pattern("MorningTwilightTime", "body", m.MorningTwilightTime.String(), `^([0-1][0-9]|2[0-3]):[0-5][0-9]$`); err != nil {
-		return err
-	}
-
-	if err := validate.FormatOf("MorningTwilightTime", "body", "duration", m.MorningTwilightTime.String(), formats); err != nil {
+	if err := validate.Pattern("MorningTwilightTime", "body", m.MorningTwilightTime, `^([0-1][0-9]|2[0-3]):[0-5][0-9]$`); err != nil {
 		return err
 	}
 
@@ -896,15 +812,11 @@ func (m *FlightOutputBase) validateMultiPilotTime(formats strfmt.Registry) error
 		return err
 	}
 
-	if err := validate.MinLength("MultiPilotTime", "body", m.MultiPilotTime.String(), 1); err != nil {
+	if err := validate.MinLength("MultiPilotTime", "body", *m.MultiPilotTime, 1); err != nil {
 		return err
 	}
 
-	if err := validate.Pattern("MultiPilotTime", "body", m.MultiPilotTime.String(), `^\d{1-5}:[0-5][0-9]$`); err != nil {
-		return err
-	}
-
-	if err := validate.FormatOf("MultiPilotTime", "body", "duration", m.MultiPilotTime.String(), formats); err != nil {
+	if err := validate.Pattern("MultiPilotTime", "body", *m.MultiPilotTime, `^\d{1-5}:[0-5][0-9]$`); err != nil {
 		return err
 	}
 
@@ -951,15 +863,11 @@ func (m *FlightOutputBase) validateNightTime(formats strfmt.Registry) error {
 		return err
 	}
 
-	if err := validate.MinLength("NightTime", "body", m.NightTime.String(), 1); err != nil {
+	if err := validate.MinLength("NightTime", "body", *m.NightTime, 1); err != nil {
 		return err
 	}
 
-	if err := validate.Pattern("NightTime", "body", m.NightTime.String(), `^\d{1-5}:[0-5][0-9]$`); err != nil {
-		return err
-	}
-
-	if err := validate.FormatOf("NightTime", "body", "duration", m.NightTime.String(), formats); err != nil {
+	if err := validate.Pattern("NightTime", "body", *m.NightTime, `^\d{1-5}:[0-5][0-9]$`); err != nil {
 		return err
 	}
 
@@ -972,15 +880,11 @@ func (m *FlightOutputBase) validateOffBlockTime(formats strfmt.Registry) error {
 		return err
 	}
 
-	if err := validate.MinLength("OffBlockTime", "body", m.OffBlockTime.String(), 1); err != nil {
+	if err := validate.MinLength("OffBlockTime", "body", *m.OffBlockTime, 1); err != nil {
 		return err
 	}
 
-	if err := validate.Pattern("OffBlockTime", "body", m.OffBlockTime.String(), `^([0-1][0-9]|2[0-3]):[0-5][0-9]$`); err != nil {
-		return err
-	}
-
-	if err := validate.FormatOf("OffBlockTime", "body", "duration", m.OffBlockTime.String(), formats); err != nil {
+	if err := validate.Pattern("OffBlockTime", "body", *m.OffBlockTime, `^([0-1][0-9]|2[0-3]):[0-5][0-9]$`); err != nil {
 		return err
 	}
 
@@ -993,15 +897,11 @@ func (m *FlightOutputBase) validateOnBlockTime(formats strfmt.Registry) error {
 		return err
 	}
 
-	if err := validate.MinLength("OnBlockTime", "body", m.OnBlockTime.String(), 1); err != nil {
+	if err := validate.MinLength("OnBlockTime", "body", *m.OnBlockTime, 1); err != nil {
 		return err
 	}
 
-	if err := validate.Pattern("OnBlockTime", "body", m.OnBlockTime.String(), `^([0-1][0-9]|2[0-3]):[0-5][0-9]$`); err != nil {
-		return err
-	}
-
-	if err := validate.FormatOf("OnBlockTime", "body", "duration", m.OnBlockTime.String(), formats); err != nil {
+	if err := validate.Pattern("OnBlockTime", "body", *m.OnBlockTime, `^([0-1][0-9]|2[0-3]):[0-5][0-9]$`); err != nil {
 		return err
 	}
 
@@ -1027,15 +927,11 @@ func (m *FlightOutputBase) validatePICTime(formats strfmt.Registry) error {
 		return err
 	}
 
-	if err := validate.MinLength("PICTime", "body", m.PICTime.String(), 1); err != nil {
+	if err := validate.MinLength("PICTime", "body", *m.PICTime, 1); err != nil {
 		return err
 	}
 
-	if err := validate.Pattern("PICTime", "body", m.PICTime.String(), `^\d{1-5}:[0-5][0-9]$`); err != nil {
-		return err
-	}
-
-	if err := validate.FormatOf("PICTime", "body", "duration", m.PICTime.String(), formats); err != nil {
+	if err := validate.Pattern("PICTime", "body", *m.PICTime, `^\d{1-5}:[0-5][0-9]$`); err != nil {
 		return err
 	}
 
@@ -1072,15 +968,11 @@ func (m *FlightOutputBase) validateSinglePilotMultiEngineTime(formats strfmt.Reg
 		return err
 	}
 
-	if err := validate.MinLength("SinglePilotMultiEngineTime", "body", m.SinglePilotMultiEngineTime.String(), 1); err != nil {
+	if err := validate.MinLength("SinglePilotMultiEngineTime", "body", *m.SinglePilotMultiEngineTime, 1); err != nil {
 		return err
 	}
 
-	if err := validate.Pattern("SinglePilotMultiEngineTime", "body", m.SinglePilotMultiEngineTime.String(), `^\d{1-5}:[0-5][0-9]$`); err != nil {
-		return err
-	}
-
-	if err := validate.FormatOf("SinglePilotMultiEngineTime", "body", "duration", m.SinglePilotMultiEngineTime.String(), formats); err != nil {
+	if err := validate.Pattern("SinglePilotMultiEngineTime", "body", *m.SinglePilotMultiEngineTime, `^\d{1-5}:[0-5][0-9]$`); err != nil {
 		return err
 	}
 
@@ -1093,15 +985,11 @@ func (m *FlightOutputBase) validateSinglePilotSingleEngineTime(formats strfmt.Re
 		return err
 	}
 
-	if err := validate.MinLength("SinglePilotSingleEngineTime", "body", m.SinglePilotSingleEngineTime.String(), 1); err != nil {
+	if err := validate.MinLength("SinglePilotSingleEngineTime", "body", *m.SinglePilotSingleEngineTime, 1); err != nil {
 		return err
 	}
 
-	if err := validate.Pattern("SinglePilotSingleEngineTime", "body", m.SinglePilotSingleEngineTime.String(), `^\d{1-5}:[0-5][0-9]$`); err != nil {
-		return err
-	}
-
-	if err := validate.FormatOf("SinglePilotSingleEngineTime", "body", "duration", m.SinglePilotSingleEngineTime.String(), formats); err != nil {
+	if err := validate.Pattern("SinglePilotSingleEngineTime", "body", *m.SinglePilotSingleEngineTime, `^\d{1-5}:[0-5][0-9]$`); err != nil {
 		return err
 	}
 
@@ -1137,11 +1025,7 @@ func (m *FlightOutputBase) validateTakeoffTime(formats strfmt.Registry) error {
 		return nil
 	}
 
-	if err := validate.Pattern("TakeoffTime", "body", m.TakeoffTime.String(), `^([0-1][0-9]|2[0-3]):[0-5][0-9]$`); err != nil {
-		return err
-	}
-
-	if err := validate.FormatOf("TakeoffTime", "body", "duration", m.TakeoffTime.String(), formats); err != nil {
+	if err := validate.Pattern("TakeoffTime", "body", m.TakeoffTime, `^([0-1][0-9]|2[0-3]):[0-5][0-9]$`); err != nil {
 		return err
 	}
 
@@ -1178,15 +1062,11 @@ func (m *FlightOutputBase) validateVFRTime(formats strfmt.Registry) error {
 		return err
 	}
 
-	if err := validate.MinLength("VFRTime", "body", m.VFRTime.String(), 1); err != nil {
+	if err := validate.MinLength("VFRTime", "body", *m.VFRTime, 1); err != nil {
 		return err
 	}
 
-	if err := validate.Pattern("VFRTime", "body", m.VFRTime.String(), `^\d{1-5}:[0-5][0-9]$`); err != nil {
-		return err
-	}
-
-	if err := validate.FormatOf("VFRTime", "body", "duration", m.VFRTime.String(), formats); err != nil {
+	if err := validate.Pattern("VFRTime", "body", *m.VFRTime, `^\d{1-5}:[0-5][0-9]$`); err != nil {
 		return err
 	}
 

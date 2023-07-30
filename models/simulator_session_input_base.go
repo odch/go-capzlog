@@ -24,8 +24,7 @@ type SimulatorSessionInputBase struct {
 	// Required: true
 	// Min Length: 1
 	// Pattern: ^\d{4}\-(0[1-9]|1[0-2])\-(0[1-9]|[1-2][0-9]|3[0-1])$
-	// Format: date-time
-	Date *strfmt.DateTime `json:"Date"`
+	Date *string `json:"Date"`
 
 	// day landings
 	// Required: true
@@ -65,8 +64,7 @@ type SimulatorSessionInputBase struct {
 	// Required: true
 	// Min Length: 1
 	// Pattern: ^\d{1-5}:[0-5][0-9]$
-	// Format: duration
-	SessionTime *strfmt.Duration `json:"SessionTime"`
+	SessionTime *string `json:"SessionTime"`
 
 	// simulator
 	Simulator *SimulatorInput `json:"Simulator,omitempty"`
@@ -124,15 +122,11 @@ func (m *SimulatorSessionInputBase) validateDate(formats strfmt.Registry) error 
 		return err
 	}
 
-	if err := validate.MinLength("Date", "body", m.Date.String(), 1); err != nil {
+	if err := validate.MinLength("Date", "body", *m.Date, 1); err != nil {
 		return err
 	}
 
-	if err := validate.Pattern("Date", "body", m.Date.String(), `^\d{4}\-(0[1-9]|1[0-2])\-(0[1-9]|[1-2][0-9]|3[0-1])$`); err != nil {
-		return err
-	}
-
-	if err := validate.FormatOf("Date", "body", "date-time", m.Date.String(), formats); err != nil {
+	if err := validate.Pattern("Date", "body", *m.Date, `^\d{4}\-(0[1-9]|1[0-2])\-(0[1-9]|[1-2][0-9]|3[0-1])$`); err != nil {
 		return err
 	}
 
@@ -263,15 +257,11 @@ func (m *SimulatorSessionInputBase) validateSessionTime(formats strfmt.Registry)
 		return err
 	}
 
-	if err := validate.MinLength("SessionTime", "body", m.SessionTime.String(), 1); err != nil {
+	if err := validate.MinLength("SessionTime", "body", *m.SessionTime, 1); err != nil {
 		return err
 	}
 
-	if err := validate.Pattern("SessionTime", "body", m.SessionTime.String(), `^\d{1-5}:[0-5][0-9]$`); err != nil {
-		return err
-	}
-
-	if err := validate.FormatOf("SessionTime", "body", "duration", m.SessionTime.String(), formats); err != nil {
+	if err := validate.Pattern("SessionTime", "body", *m.SessionTime, `^\d{1-5}:[0-5][0-9]$`); err != nil {
 		return err
 	}
 
