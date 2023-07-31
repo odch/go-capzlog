@@ -29,6 +29,15 @@ func (o *ExternalSystemFlightsPostReader) ReadResponse(response runtime.ClientRe
 			return nil, err
 		}
 		return result, nil
+	case 400:
+		result := NewExternalSystemFlightsPostBadRequest()
+		fmt.Println("reading 400")
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			fmt.Println("reading 400 failed")
+			return nil, err
+		}
+		fmt.Println("reading 400 ok")
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -60,6 +69,36 @@ func (o *ExternalSystemFlightsPostOK) readResponse(response runtime.ClientRespon
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewExternalSystemFlightsPostBadRequest creates a ExternalSystemFlightsPostBadRequest with default headers values
+func NewExternalSystemFlightsPostBadRequest() *ExternalSystemFlightsPostBadRequest {
+	return &ExternalSystemFlightsPostBadRequest{}
+}
+
+/* ExternalSystemFlightsPostBadRequest describes a response with status code 400, with default header values.
+
+ExternalSystemFlightsPostBadRequest external system flights post bad request
+*/
+type ExternalSystemFlightsPostBadRequest struct {
+	Payload string
+}
+
+func (o *ExternalSystemFlightsPostBadRequest) Error() string {
+	return fmt.Sprintf("[POST /api/pel/public/externalsystemflights][%d] externalSystemFlightsPostBadRequest  %+v", 400, o.Payload)
+}
+func (o *ExternalSystemFlightsPostBadRequest) GetPayload() string {
+	return o.Payload
+}
+
+func (o *ExternalSystemFlightsPostBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// response payload
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
