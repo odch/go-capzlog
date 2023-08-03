@@ -31,12 +31,9 @@ func (o *ExternalSystemFlightsPostReader) ReadResponse(response runtime.ClientRe
 		return result, nil
 	case 400:
 		result := NewExternalSystemFlightsPostBadRequest()
-		fmt.Println("reading 400")
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			fmt.Println("reading 400 failed")
 			return nil, err
 		}
-		fmt.Println("reading 400 ok")
 		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())

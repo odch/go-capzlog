@@ -149,7 +149,6 @@ func (a *Client) ExternalSystemFlightsPost(params *ExternalSystemFlightsPostPara
 
 	result, err := a.transport.Submit(op)
 	if err != nil {
-		fmt.Println("not success")
 		return nil, err
 	}
 	success, ok := result.(*ExternalSystemFlightsPostOK)

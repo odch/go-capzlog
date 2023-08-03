@@ -11,7 +11,7 @@
     },
     "version": "1.0.0"
   },
-  "host": "test.capzlog.aero",
+  "host": "capzlog.aero",
   "schemes": [
     "https"
   ],
@@ -45,13 +45,6 @@
             "description": "",
             "schema": {
               "$ref": "#/definitions/ExternalSystemConnectionActivationOutput"
-            }
-          },
-          "400": {
-            "x-nullable": false,
-            "description": "",
-            "schema": {
-              "type": "string"
             }
           }
         },
@@ -728,13 +721,6 @@
             "schema": {
               "$ref": "#/definitions/ExternalSystemFlightOutput"
             }
-          },
-          "400": {
-            "x-nullable": false,
-            "description": "",
-            "schema": {
-              "type": "string"
-            }
           }
         },
         "security": [
@@ -850,11 +836,13 @@
       "properties": {
         "Date": {
           "type": "string",
+          "format": "date-time",
           "minLength": 1,
           "pattern": "^\\d{4}\\-(0[1-9]|1[0-2])\\-(0[1-9]|[1-2][0-9]|3[0-1])$"
         },
         "SessionTime": {
           "type": "string",
+          "format": "duration",
           "minLength": 1,
           "pattern": "^\\d{1-5}:[0-5][0-9]$"
         },
@@ -920,21 +908,25 @@
         },
         "SingleEngineTime": {
           "type": "string",
+          "format": "duration",
           "minLength": 1,
           "pattern": "^\\d{1-5}:[0-5][0-9]$"
         },
         "MultiEngineTime": {
           "type": "string",
+          "format": "duration",
           "minLength": 1,
           "pattern": "^\\d{1-5}:[0-5][0-9]$"
         },
         "TraineeTime": {
           "type": "string",
+          "format": "duration",
           "minLength": 1,
           "pattern": "^\\d{1-5}:[0-5][0-9]$"
         },
         "SfiSfeTime": {
           "type": "string",
+          "format": "duration",
           "minLength": 1,
           "pattern": "^\\d{1-5}:[0-5][0-9]$"
         }
@@ -1287,11 +1279,13 @@
       "properties": {
         "Date": {
           "type": "string",
+          "format": "date-time",
           "minLength": 1,
           "pattern": "^\\d{4}\\-(0[1-9]|1[0-2])\\-(0[1-9]|[1-2][0-9]|3[0-1])$"
         },
         "SessionTime": {
           "type": "string",
+          "format": "duration",
           "minLength": 1,
           "pattern": "^\\d{1-5}:[0-5][0-9]$"
         },
@@ -1416,6 +1410,7 @@
       "properties": {
         "Date": {
           "type": "string",
+          "format": "date-time",
           "minLength": 1,
           "pattern": "^\\d{4}\\-(0[1-9]|1[0-2])\\-(0[1-9]|[1-2][0-9]|3[0-1])$"
         },
@@ -1425,11 +1420,13 @@
         },
         "TakeoffTime": {
           "type": "string",
+          "format": "duration",
           "minLength": 1,
           "pattern": "^([0-1][0-9]|2[0-3]):[0-5][0-9]$"
         },
         "LandingTime": {
           "type": "string",
+          "format": "duration",
           "minLength": 1,
           "pattern": "^([0-1][0-9]|2[0-3]):[0-5][0-9]$"
         },
@@ -1454,11 +1451,13 @@
         "MorningTwilightTime": {
           "type": "string",
           "description": "Only flights in the TMG category can have night time and thus also twilight times",
+          "format": "duration",
           "pattern": "^([0-1][0-9]|2[0-3]):[0-5][0-9]$"
         },
         "EveningTwilightTime": {
           "type": "string",
           "description": "Only flights in the TMG category can have night time and thus also twilight times",
+          "format": "duration",
           "pattern": "^([0-1][0-9]|2[0-3]):[0-5][0-9]$"
         },
         "LaunchMethod": {
@@ -1516,36 +1515,43 @@
         },
         "FlightTime": {
           "type": "string",
+          "format": "duration",
           "minLength": 1,
           "pattern": "^\\d{1-5}:[0-5][0-9]$"
         },
         "PICTime": {
           "type": "string",
+          "format": "duration",
           "minLength": 1,
           "pattern": "^\\d{1-5}:[0-5][0-9]$"
         },
         "DualTime": {
           "type": "string",
+          "format": "duration",
           "minLength": 1,
           "pattern": "^\\d{1-5}:[0-5][0-9]$"
         },
         "InstructorTime": {
           "type": "string",
+          "format": "duration",
           "minLength": 1,
           "pattern": "^\\d{1-5}:[0-5][0-9]$"
         },
         "DayTime": {
           "type": "string",
+          "format": "duration",
           "minLength": 1,
           "pattern": "^\\d{1-5}:[0-5][0-9]$"
         },
         "NightTime": {
           "type": "string",
+          "format": "duration",
           "minLength": 1,
           "pattern": "^\\d{1-5}:[0-5][0-9]$"
         },
         "TmgTime": {
           "type": "string",
+          "format": "duration",
           "minLength": 1,
           "pattern": "^\\d{1-5}:[0-5][0-9]$"
         }
@@ -1682,6 +1688,7 @@
       "properties": {
         "Date": {
           "type": "string",
+          "format": "date-time",
           "minLength": 1,
           "pattern": "^\\d{4}\\-(0[1-9]|1[0-2])\\-(0[1-9]|[1-2][0-9]|3[0-1])$"
         },
@@ -1691,11 +1698,13 @@
         },
         "TakeoffTime": {
           "type": "string",
+          "format": "duration",
           "minLength": 1,
           "pattern": "^([0-1][0-9]|2[0-3]):[0-5][0-9]$"
         },
         "LandingTime": {
           "type": "string",
+          "format": "duration",
           "minLength": 1,
           "pattern": "^([0-1][0-9]|2[0-3]):[0-5][0-9]$"
         },
@@ -1720,11 +1729,13 @@
         "MorningTwilightTime": {
           "type": "string",
           "description": "Only flights in the TMG category can have night time and thus also twilight times",
+          "format": "duration",
           "pattern": "^([0-1][0-9]|2[0-3]):[0-5][0-9]$"
         },
         "EveningTwilightTime": {
           "type": "string",
           "description": "Only flights in the TMG category can have night time and thus also twilight times",
+          "format": "duration",
           "pattern": "^([0-1][0-9]|2[0-3]):[0-5][0-9]$"
         },
         "LaunchMethod": {
@@ -1936,6 +1947,7 @@
       "properties": {
         "Date": {
           "type": "string",
+          "format": "date-time",
           "minLength": 1,
           "pattern": "^\\d{4}\\-(0[1-9]|1[0-2])\\-(0[1-9]|[1-2][0-9]|3[0-1])$"
         },
@@ -1953,11 +1965,13 @@
         },
         "TakeoffTime": {
           "type": "string",
+          "format": "duration",
           "minLength": 1,
           "pattern": "^([0-1][0-9]|2[0-3]):[0-5][0-9]$"
         },
         "LandingTime": {
           "type": "string",
+          "format": "duration",
           "minLength": 1,
           "pattern": "^([0-1][0-9]|2[0-3]):[0-5][0-9]$"
         },
@@ -1989,10 +2003,12 @@
         },
         "MorningTwilightTime": {
           "type": "string",
+          "format": "duration",
           "pattern": "^([0-1][0-9]|2[0-3]):[0-5][0-9]$"
         },
         "EveningTwilightTime": {
           "type": "string",
+          "format": "duration",
           "pattern": "^([0-1][0-9]|2[0-3]):[0-5][0-9]$"
         },
         "PilotFunction": {
@@ -2041,56 +2057,67 @@
         },
         "FlightTime": {
           "type": "string",
+          "format": "duration",
           "minLength": 1,
           "pattern": "^\\d{1-5}:[0-5][0-9]$"
         },
         "PICTime": {
           "type": "string",
+          "format": "duration",
           "minLength": 1,
           "pattern": "^\\d{1-5}:[0-5][0-9]$"
         },
         "DualTime": {
           "type": "string",
+          "format": "duration",
           "minLength": 1,
           "pattern": "^\\d{1-5}:[0-5][0-9]$"
         },
         "InstructorTime": {
           "type": "string",
+          "format": "duration",
           "minLength": 1,
           "pattern": "^\\d{1-5}:[0-5][0-9]$"
         },
         "DayTime": {
           "type": "string",
+          "format": "duration",
           "minLength": 1,
           "pattern": "^\\d{1-5}:[0-5][0-9]$"
         },
         "NightTime": {
           "type": "string",
+          "format": "duration",
           "minLength": 1,
           "pattern": "^\\d{1-5}:[0-5][0-9]$"
         },
         "GroupATime": {
           "type": "string",
+          "format": "duration",
           "minLength": 1,
           "pattern": "^\\d{1-5}:[0-5][0-9]$"
         },
         "GroupBTime": {
           "type": "string",
+          "format": "duration",
           "minLength": 1,
           "pattern": "^\\d{1-5}:[0-5][0-9]$"
         },
         "GroupCTime": {
           "type": "string",
+          "format": "duration",
           "minLength": 1,
           "pattern": "^\\d{1-5}:[0-5][0-9]$"
         },
         "GroupDTime": {
           "type": "string",
+          "format": "duration",
           "minLength": 1,
           "pattern": "^\\d{1-5}:[0-5][0-9]$"
         },
         "GasTime": {
           "type": "string",
+          "format": "duration",
           "minLength": 1,
           "pattern": "^\\d{1-5}:[0-5][0-9]$"
         }
@@ -2185,6 +2212,7 @@
       "properties": {
         "Date": {
           "type": "string",
+          "format": "date-time",
           "minLength": 1,
           "pattern": "^\\d{4}\\-(0[1-9]|1[0-2])\\-(0[1-9]|[1-2][0-9]|3[0-1])$"
         },
@@ -2202,11 +2230,13 @@
         },
         "TakeoffTime": {
           "type": "string",
+          "format": "duration",
           "minLength": 1,
           "pattern": "^([0-1][0-9]|2[0-3]):[0-5][0-9]$"
         },
         "LandingTime": {
           "type": "string",
+          "format": "duration",
           "minLength": 1,
           "pattern": "^([0-1][0-9]|2[0-3]):[0-5][0-9]$"
         },
@@ -2238,10 +2268,12 @@
         },
         "MorningTwilightTime": {
           "type": "string",
+          "format": "duration",
           "pattern": "^([0-1][0-9]|2[0-3]):[0-5][0-9]$"
         },
         "EveningTwilightTime": {
           "type": "string",
+          "format": "duration",
           "pattern": "^([0-1][0-9]|2[0-3]):[0-5][0-9]$"
         },
         "PilotFunction": {
@@ -2367,6 +2399,7 @@
       "properties": {
         "Date": {
           "type": "string",
+          "format": "date-time",
           "minLength": 1,
           "pattern": "^\\d{4}\\-(0[1-9]|1[0-2])\\-(0[1-9]|[1-2][0-9]|3[0-1])$"
         },
@@ -2376,20 +2409,24 @@
         },
         "OffBlockTime": {
           "type": "string",
+          "format": "duration",
           "minLength": 1,
           "pattern": "^([0-1][0-9]|2[0-3]):[0-5][0-9]$"
         },
         "OnBlockTime": {
           "type": "string",
+          "format": "duration",
           "minLength": 1,
           "pattern": "^([0-1][0-9]|2[0-3]):[0-5][0-9]$"
         },
         "TakeoffTime": {
           "type": "string",
+          "format": "duration",
           "pattern": "^([0-1][0-9]|2[0-3]):[0-5][0-9]$"
         },
         "LandingTime": {
           "type": "string",
+          "format": "duration",
           "pattern": "^([0-1][0-9]|2[0-3]):[0-5][0-9]$"
         },
         "PICName": {
@@ -2426,10 +2463,12 @@
         },
         "MorningTwilightTime": {
           "type": "string",
+          "format": "duration",
           "pattern": "^([0-1][0-9]|2[0-3]):[0-5][0-9]$"
         },
         "EveningTwilightTime": {
           "type": "string",
+          "format": "duration",
           "pattern": "^([0-1][0-9]|2[0-3]):[0-5][0-9]$"
         },
         "TypeOfFlight": {
@@ -2437,10 +2476,12 @@
         },
         "ChangeVFRToIFRTime": {
           "type": "string",
+          "format": "duration",
           "pattern": "^([0-1][0-9]|2[0-3]):[0-5][0-9]$"
         },
         "ChangeIFRToVFRTime": {
           "type": "string",
+          "format": "duration",
           "pattern": "^([0-1][0-9]|2[0-3]):[0-5][0-9]$"
         },
         "PilotFunction": {
@@ -2452,11 +2493,13 @@
         "AircraftCounterStart": {
           "type": "string",
           "description": "The start value of the aircraft counter. If provided, AircraftCounterEnd must also be provided. The time between AircraftCounterStart and AircraftCounterEnd must be less than the flight time and equal to the airborne time if it is provided",
+          "format": "duration",
           "pattern": "^\\d{1-5}:[0-5][0-9]$"
         },
         "AircraftCounterEnd": {
           "type": "string",
           "description": "The end value of the aircraft counter. If provided, AircraftCounterStart must also be provided. The time between AircraftCounterStart and AircraftCounterEnd must be less than the flight time and equal to the airborne time if it is provided",
+          "format": "duration",
           "pattern": "^\\d{1-5}:[0-5][0-9]$"
         },
         "IsMultiPilot": {
@@ -2500,66 +2543,79 @@
         },
         "FlightTime": {
           "type": "string",
+          "format": "duration",
           "minLength": 1,
           "pattern": "^\\d{1-5}:[0-5][0-9]$"
         },
         "AirborneTime": {
           "type": "string",
+          "format": "duration",
           "minLength": 1,
           "pattern": "^\\d{1-5}:[0-5][0-9]$"
         },
         "SinglePilotSingleEngineTime": {
           "type": "string",
+          "format": "duration",
           "minLength": 1,
           "pattern": "^\\d{1-5}:[0-5][0-9]$"
         },
         "SinglePilotMultiEngineTime": {
           "type": "string",
+          "format": "duration",
           "minLength": 1,
           "pattern": "^\\d{1-5}:[0-5][0-9]$"
         },
         "MultiPilotTime": {
           "type": "string",
+          "format": "duration",
           "minLength": 1,
           "pattern": "^\\d{1-5}:[0-5][0-9]$"
         },
         "PICTime": {
           "type": "string",
+          "format": "duration",
           "minLength": 1,
           "pattern": "^\\d{1-5}:[0-5][0-9]$"
         },
         "DualTime": {
           "type": "string",
+          "format": "duration",
           "minLength": 1,
           "pattern": "^\\d{1-5}:[0-5][0-9]$"
         },
         "CopiTime": {
           "type": "string",
+          "format": "duration",
           "minLength": 1,
           "pattern": "^\\d{1-5}:[0-5][0-9]$"
         },
         "InstructorTime": {
           "type": "string",
+          "format": "duration",
           "minLength": 1,
           "pattern": "^\\d{1-5}:[0-5][0-9]$"
         },
         "VFRTime": {
           "type": "string",
+          "format": "duration",
           "minLength": 1,
           "pattern": "^\\d{1-5}:[0-5][0-9]$"
         },
         "IFRTime": {
           "type": "string",
+          "format": "duration",
           "minLength": 1,
           "pattern": "^\\d{1-5}:[0-5][0-9]$"
         },
         "DayTime": {
           "type": "string",
+          "format": "duration",
           "minLength": 1,
           "pattern": "^\\d{1-5}:[0-5][0-9]$"
         },
         "NightTime": {
           "type": "string",
+          "format": "duration",
           "minLength": 1,
           "pattern": "^\\d{1-5}:[0-5][0-9]$"
         }
@@ -2657,6 +2713,7 @@
       "properties": {
         "Date": {
           "type": "string",
+          "format": "date-time",
           "minLength": 1,
           "pattern": "^\\d{4}\\-(0[1-9]|1[0-2])\\-(0[1-9]|[1-2][0-9]|3[0-1])$"
         },
@@ -2666,20 +2723,24 @@
         },
         "OffBlockTime": {
           "type": "string",
+          "format": "duration",
           "minLength": 1,
           "pattern": "^([0-1][0-9]|2[0-3]):[0-5][0-9]$"
         },
         "OnBlockTime": {
           "type": "string",
+          "format": "duration",
           "minLength": 1,
           "pattern": "^([0-1][0-9]|2[0-3]):[0-5][0-9]$"
         },
         "TakeoffTime": {
           "type": "string",
+          "format": "duration",
           "pattern": "^([0-1][0-9]|2[0-3]):[0-5][0-9]$"
         },
         "LandingTime": {
           "type": "string",
+          "format": "duration",
           "pattern": "^([0-1][0-9]|2[0-3]):[0-5][0-9]$"
         },
         "PICName": {
@@ -2716,10 +2777,12 @@
         },
         "MorningTwilightTime": {
           "type": "string",
+          "format": "duration",
           "pattern": "^([0-1][0-9]|2[0-3]):[0-5][0-9]$"
         },
         "EveningTwilightTime": {
           "type": "string",
+          "format": "duration",
           "pattern": "^([0-1][0-9]|2[0-3]):[0-5][0-9]$"
         },
         "TypeOfFlight": {
@@ -2727,10 +2790,12 @@
         },
         "ChangeVFRToIFRTime": {
           "type": "string",
+          "format": "duration",
           "pattern": "^([0-1][0-9]|2[0-3]):[0-5][0-9]$"
         },
         "ChangeIFRToVFRTime": {
           "type": "string",
+          "format": "duration",
           "pattern": "^([0-1][0-9]|2[0-3]):[0-5][0-9]$"
         },
         "PilotFunction": {
@@ -2742,11 +2807,13 @@
         "AircraftCounterStart": {
           "type": "string",
           "description": "The start value of the aircraft counter. If provided, AircraftCounterEnd must also be provided. The time between AircraftCounterStart and AircraftCounterEnd must be less than the flight time and equal to the airborne time if it is provided",
+          "format": "duration",
           "pattern": "^\\d{1-5}:[0-5][0-9]$"
         },
         "AircraftCounterEnd": {
           "type": "string",
           "description": "The end value of the aircraft counter. If provided, AircraftCounterStart must also be provided. The time between AircraftCounterStart and AircraftCounterEnd must be less than the flight time and equal to the airborne time if it is provided",
+          "format": "duration",
           "pattern": "^\\d{1-5}:[0-5][0-9]$"
         },
         "IsMultiPilot": {
