@@ -6,6 +6,7 @@ package external_system_activation
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"encoding/json"
 	"fmt"
 	"io"
 
@@ -36,7 +37,7 @@ func (o *ExternalSystemActivationPostReader) ReadResponse(response runtime.Clien
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /api/pel/public/externalsystemactivation] ExternalSystemActivation_Post", response, response.Code())
 	}
 }
 
@@ -45,7 +46,8 @@ func NewExternalSystemActivationPostOK() *ExternalSystemActivationPostOK {
 	return &ExternalSystemActivationPostOK{}
 }
 
-/* ExternalSystemActivationPostOK describes a response with status code 200, with default header values.
+/*
+ExternalSystemActivationPostOK describes a response with status code 200, with default header values.
 
 ExternalSystemActivationPostOK external system activation post o k
 */
@@ -53,9 +55,46 @@ type ExternalSystemActivationPostOK struct {
 	Payload *models.ExternalSystemConnectionActivationOutput
 }
 
-func (o *ExternalSystemActivationPostOK) Error() string {
-	return fmt.Sprintf("[POST /api/pel/public/externalsystemactivation][%d] externalSystemActivationPostOK  %+v", 200, o.Payload)
+// IsSuccess returns true when this external system activation post o k response has a 2xx status code
+func (o *ExternalSystemActivationPostOK) IsSuccess() bool {
+	return true
 }
+
+// IsRedirect returns true when this external system activation post o k response has a 3xx status code
+func (o *ExternalSystemActivationPostOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this external system activation post o k response has a 4xx status code
+func (o *ExternalSystemActivationPostOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this external system activation post o k response has a 5xx status code
+func (o *ExternalSystemActivationPostOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this external system activation post o k response a status code equal to that given
+func (o *ExternalSystemActivationPostOK) IsCode(code int) bool {
+	return code == 200
+}
+
+// Code gets the status code for the external system activation post o k response
+func (o *ExternalSystemActivationPostOK) Code() int {
+	return 200
+}
+
+func (o *ExternalSystemActivationPostOK) Error() string {
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /api/pel/public/externalsystemactivation][%d] externalSystemActivationPostOK %s", 200, payload)
+}
+
+func (o *ExternalSystemActivationPostOK) String() string {
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /api/pel/public/externalsystemactivation][%d] externalSystemActivationPostOK %s", 200, payload)
+}
+
 func (o *ExternalSystemActivationPostOK) GetPayload() *models.ExternalSystemConnectionActivationOutput {
 	return o.Payload
 }
@@ -77,7 +116,8 @@ func NewExternalSystemActivationPostBadRequest() *ExternalSystemActivationPostBa
 	return &ExternalSystemActivationPostBadRequest{}
 }
 
-/* ExternalSystemActivationPostBadRequest describes a response with status code 400, with default header values.
+/*
+ExternalSystemActivationPostBadRequest describes a response with status code 400, with default header values.
 
 ExternalSystemActivationPostBadRequest external system activation post bad request
 */
@@ -85,9 +125,46 @@ type ExternalSystemActivationPostBadRequest struct {
 	Payload string
 }
 
-func (o *ExternalSystemActivationPostBadRequest) Error() string {
-	return fmt.Sprintf("[POST /api/pel/public/externalsystemactivation][%d] externalSystemActivationPostBadRequest  %+v", 400, o.Payload)
+// IsSuccess returns true when this external system activation post bad request response has a 2xx status code
+func (o *ExternalSystemActivationPostBadRequest) IsSuccess() bool {
+	return false
 }
+
+// IsRedirect returns true when this external system activation post bad request response has a 3xx status code
+func (o *ExternalSystemActivationPostBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this external system activation post bad request response has a 4xx status code
+func (o *ExternalSystemActivationPostBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this external system activation post bad request response has a 5xx status code
+func (o *ExternalSystemActivationPostBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this external system activation post bad request response a status code equal to that given
+func (o *ExternalSystemActivationPostBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
+// Code gets the status code for the external system activation post bad request response
+func (o *ExternalSystemActivationPostBadRequest) Code() int {
+	return 400
+}
+
+func (o *ExternalSystemActivationPostBadRequest) Error() string {
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /api/pel/public/externalsystemactivation][%d] externalSystemActivationPostBadRequest %s", 400, payload)
+}
+
+func (o *ExternalSystemActivationPostBadRequest) String() string {
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /api/pel/public/externalsystemactivation][%d] externalSystemActivationPostBadRequest %s", 400, payload)
+}
+
 func (o *ExternalSystemActivationPostBadRequest) GetPayload() string {
 	return o.Payload
 }

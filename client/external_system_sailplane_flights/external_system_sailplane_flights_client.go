@@ -10,12 +10,38 @@ import (
 	"io"
 
 	"github.com/go-openapi/runtime"
+	httptransport "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
 )
 
 // New creates a new external system sailplane flights API client.
 func New(transport runtime.ClientTransport, formats strfmt.Registry) ClientService {
 	return &Client{transport: transport, formats: formats}
+}
+
+// New creates a new external system sailplane flights API client with basic auth credentials.
+// It takes the following parameters:
+// - host: http host (github.com).
+// - basePath: any base path for the API client ("/v1", "/v3").
+// - scheme: http scheme ("http", "https").
+// - user: user for basic authentication header.
+// - password: password for basic authentication header.
+func NewClientWithBasicAuth(host, basePath, scheme, user, password string) ClientService {
+	transport := httptransport.New(host, basePath, []string{scheme})
+	transport.DefaultAuthentication = httptransport.BasicAuth(user, password)
+	return &Client{transport: transport, formats: strfmt.Default}
+}
+
+// New creates a new external system sailplane flights API client with a bearer token for authentication.
+// It takes the following parameters:
+// - host: http host (github.com).
+// - basePath: any base path for the API client ("/v1", "/v3").
+// - scheme: http scheme ("http", "https").
+// - bearerToken: bearer token for Bearer authentication header.
+func NewClientWithBearerToken(host, basePath, scheme, bearerToken string) ClientService {
+	transport := httptransport.New(host, basePath, []string{scheme})
+	transport.DefaultAuthentication = httptransport.BearerToken(bearerToken)
+	return &Client{transport: transport, formats: strfmt.Default}
 }
 
 /*
@@ -26,7 +52,7 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
-// ClientOption is the option for Client methods
+// ClientOption may be used to customize the behavior of Client methods.
 type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
@@ -45,7 +71,7 @@ type ClientService interface {
 }
 
 /*
-  ExternalSystemSailplaneFlightsDelete deletes an existing sailplane flight in capzlog aero
+ExternalSystemSailplaneFlightsDelete deletes an existing sailplane flight in capzlog aero
 */
 func (a *Client) ExternalSystemSailplaneFlightsDelete(params *ExternalSystemSailplaneFlightsDeleteParams, authInfo runtime.ClientAuthInfoWriter, writer io.Writer, opts ...ClientOption) (*ExternalSystemSailplaneFlightsDeleteOK, error) {
 	// TODO: Validate the params before sending
@@ -84,7 +110,7 @@ func (a *Client) ExternalSystemSailplaneFlightsDelete(params *ExternalSystemSail
 }
 
 /*
-  ExternalSystemSailplaneFlightsGet gets a sailplane flight from capzlog aero based on the external system unique ID
+ExternalSystemSailplaneFlightsGet gets a sailplane flight from capzlog aero based on the external system unique ID
 */
 func (a *Client) ExternalSystemSailplaneFlightsGet(params *ExternalSystemSailplaneFlightsGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ExternalSystemSailplaneFlightsGetOK, error) {
 	// TODO: Validate the params before sending
@@ -123,7 +149,7 @@ func (a *Client) ExternalSystemSailplaneFlightsGet(params *ExternalSystemSailpla
 }
 
 /*
-  ExternalSystemSailplaneFlightsPost creates a sailplane flight in capzlog aero
+ExternalSystemSailplaneFlightsPost creates a sailplane flight in capzlog aero
 */
 func (a *Client) ExternalSystemSailplaneFlightsPost(params *ExternalSystemSailplaneFlightsPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ExternalSystemSailplaneFlightsPostOK, error) {
 	// TODO: Validate the params before sending
@@ -162,7 +188,7 @@ func (a *Client) ExternalSystemSailplaneFlightsPost(params *ExternalSystemSailpl
 }
 
 /*
-  ExternalSystemSailplaneFlightsPostMultiple creates multiple sailplane flights in capzlog aero
+ExternalSystemSailplaneFlightsPostMultiple creates multiple sailplane flights in capzlog aero
 */
 func (a *Client) ExternalSystemSailplaneFlightsPostMultiple(params *ExternalSystemSailplaneFlightsPostMultipleParams, authInfo runtime.ClientAuthInfoWriter, writer io.Writer, opts ...ClientOption) (*ExternalSystemSailplaneFlightsPostMultipleOK, error) {
 	// TODO: Validate the params before sending
@@ -201,7 +227,7 @@ func (a *Client) ExternalSystemSailplaneFlightsPostMultiple(params *ExternalSyst
 }
 
 /*
-  ExternalSystemSailplaneFlightsPut modifies an existing sailplane flight in capzlog aero
+ExternalSystemSailplaneFlightsPut modifies an existing sailplane flight in capzlog aero
 */
 func (a *Client) ExternalSystemSailplaneFlightsPut(params *ExternalSystemSailplaneFlightsPutParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ExternalSystemSailplaneFlightsPutOK, error) {
 	// TODO: Validate the params before sending

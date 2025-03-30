@@ -6,6 +6,7 @@ package external_system_balloon_flights
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"encoding/json"
 	"fmt"
 	"io"
 
@@ -30,7 +31,7 @@ func (o *ExternalSystemBalloonFlightsGetReader) ReadResponse(response runtime.Cl
 		}
 		return result, nil
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /api/pel/public/externalsystemballoonflights/{id}] ExternalSystemBalloonFlights_Get", response, response.Code())
 	}
 }
 
@@ -39,7 +40,8 @@ func NewExternalSystemBalloonFlightsGetOK() *ExternalSystemBalloonFlightsGetOK {
 	return &ExternalSystemBalloonFlightsGetOK{}
 }
 
-/* ExternalSystemBalloonFlightsGetOK describes a response with status code 200, with default header values.
+/*
+ExternalSystemBalloonFlightsGetOK describes a response with status code 200, with default header values.
 
 ExternalSystemBalloonFlightsGetOK external system balloon flights get o k
 */
@@ -47,9 +49,46 @@ type ExternalSystemBalloonFlightsGetOK struct {
 	Payload *models.ExternalSystemBalloonFlightOutput
 }
 
-func (o *ExternalSystemBalloonFlightsGetOK) Error() string {
-	return fmt.Sprintf("[GET /api/pel/public/externalsystemballoonflights/{id}][%d] externalSystemBalloonFlightsGetOK  %+v", 200, o.Payload)
+// IsSuccess returns true when this external system balloon flights get o k response has a 2xx status code
+func (o *ExternalSystemBalloonFlightsGetOK) IsSuccess() bool {
+	return true
 }
+
+// IsRedirect returns true when this external system balloon flights get o k response has a 3xx status code
+func (o *ExternalSystemBalloonFlightsGetOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this external system balloon flights get o k response has a 4xx status code
+func (o *ExternalSystemBalloonFlightsGetOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this external system balloon flights get o k response has a 5xx status code
+func (o *ExternalSystemBalloonFlightsGetOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this external system balloon flights get o k response a status code equal to that given
+func (o *ExternalSystemBalloonFlightsGetOK) IsCode(code int) bool {
+	return code == 200
+}
+
+// Code gets the status code for the external system balloon flights get o k response
+func (o *ExternalSystemBalloonFlightsGetOK) Code() int {
+	return 200
+}
+
+func (o *ExternalSystemBalloonFlightsGetOK) Error() string {
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /api/pel/public/externalsystemballoonflights/{id}][%d] externalSystemBalloonFlightsGetOK %s", 200, payload)
+}
+
+func (o *ExternalSystemBalloonFlightsGetOK) String() string {
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /api/pel/public/externalsystemballoonflights/{id}][%d] externalSystemBalloonFlightsGetOK %s", 200, payload)
+}
+
 func (o *ExternalSystemBalloonFlightsGetOK) GetPayload() *models.ExternalSystemBalloonFlightOutput {
 	return o.Payload
 }

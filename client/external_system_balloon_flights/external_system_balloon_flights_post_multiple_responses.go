@@ -29,7 +29,7 @@ func (o *ExternalSystemBalloonFlightsPostMultipleReader) ReadResponse(response r
 		}
 		return result, nil
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /api/pel/public/externalsystemballoonflights/PostMultiple] ExternalSystemBalloonFlights_PostMultiple", response, response.Code())
 	}
 }
 
@@ -41,7 +41,8 @@ func NewExternalSystemBalloonFlightsPostMultipleOK(writer io.Writer) *ExternalSy
 	}
 }
 
-/* ExternalSystemBalloonFlightsPostMultipleOK describes a response with status code 200, with default header values.
+/*
+ExternalSystemBalloonFlightsPostMultipleOK describes a response with status code 200, with default header values.
 
 ExternalSystemBalloonFlightsPostMultipleOK external system balloon flights post multiple o k
 */
@@ -49,9 +50,44 @@ type ExternalSystemBalloonFlightsPostMultipleOK struct {
 	Payload io.Writer
 }
 
-func (o *ExternalSystemBalloonFlightsPostMultipleOK) Error() string {
-	return fmt.Sprintf("[POST /api/pel/public/externalsystemballoonflights/PostMultiple][%d] externalSystemBalloonFlightsPostMultipleOK  %+v", 200, o.Payload)
+// IsSuccess returns true when this external system balloon flights post multiple o k response has a 2xx status code
+func (o *ExternalSystemBalloonFlightsPostMultipleOK) IsSuccess() bool {
+	return true
 }
+
+// IsRedirect returns true when this external system balloon flights post multiple o k response has a 3xx status code
+func (o *ExternalSystemBalloonFlightsPostMultipleOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this external system balloon flights post multiple o k response has a 4xx status code
+func (o *ExternalSystemBalloonFlightsPostMultipleOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this external system balloon flights post multiple o k response has a 5xx status code
+func (o *ExternalSystemBalloonFlightsPostMultipleOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this external system balloon flights post multiple o k response a status code equal to that given
+func (o *ExternalSystemBalloonFlightsPostMultipleOK) IsCode(code int) bool {
+	return code == 200
+}
+
+// Code gets the status code for the external system balloon flights post multiple o k response
+func (o *ExternalSystemBalloonFlightsPostMultipleOK) Code() int {
+	return 200
+}
+
+func (o *ExternalSystemBalloonFlightsPostMultipleOK) Error() string {
+	return fmt.Sprintf("[POST /api/pel/public/externalsystemballoonflights/PostMultiple][%d] externalSystemBalloonFlightsPostMultipleOK", 200)
+}
+
+func (o *ExternalSystemBalloonFlightsPostMultipleOK) String() string {
+	return fmt.Sprintf("[POST /api/pel/public/externalsystemballoonflights/PostMultiple][%d] externalSystemBalloonFlightsPostMultipleOK", 200)
+}
+
 func (o *ExternalSystemBalloonFlightsPostMultipleOK) GetPayload() io.Writer {
 	return o.Payload
 }

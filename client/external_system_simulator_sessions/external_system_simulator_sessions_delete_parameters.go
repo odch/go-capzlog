@@ -52,10 +52,12 @@ func NewExternalSystemSimulatorSessionsDeleteParamsWithHTTPClient(client *http.C
 	}
 }
 
-/* ExternalSystemSimulatorSessionsDeleteParams contains all the parameters to send to the API endpoint
-   for the external system simulator sessions delete operation.
+/*
+ExternalSystemSimulatorSessionsDeleteParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the external system simulator sessions delete operation.
+
+	Typically these are written to a http.Request.
 */
 type ExternalSystemSimulatorSessionsDeleteParams struct {
 

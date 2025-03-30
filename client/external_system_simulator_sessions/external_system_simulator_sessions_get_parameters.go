@@ -52,10 +52,12 @@ func NewExternalSystemSimulatorSessionsGetParamsWithHTTPClient(client *http.Clie
 	}
 }
 
-/* ExternalSystemSimulatorSessionsGetParams contains all the parameters to send to the API endpoint
-   for the external system simulator sessions get operation.
+/*
+ExternalSystemSimulatorSessionsGetParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the external system simulator sessions get operation.
+
+	Typically these are written to a http.Request.
 */
 type ExternalSystemSimulatorSessionsGetParams struct {
 

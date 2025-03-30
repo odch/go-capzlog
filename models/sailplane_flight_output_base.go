@@ -779,6 +779,11 @@ func (m *SailplaneFlightOutputBase) ContextValidate(ctx context.Context, formats
 func (m *SailplaneFlightOutputBase) contextValidateAircraft(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Aircraft != nil {
+
+		if swag.IsZero(m.Aircraft) { // not required
+			return nil
+		}
+
 		if err := m.Aircraft.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("Aircraft")
@@ -795,6 +800,7 @@ func (m *SailplaneFlightOutputBase) contextValidateAircraft(ctx context.Context,
 func (m *SailplaneFlightOutputBase) contextValidateArrivalAirport(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.ArrivalAirport != nil {
+
 		if err := m.ArrivalAirport.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("ArrivalAirport")
@@ -816,6 +822,7 @@ func (m *SailplaneFlightOutputBase) contextValidateDayNightSequence(ctx context.
 func (m *SailplaneFlightOutputBase) contextValidateDepartureAirport(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.DepartureAirport != nil {
+
 		if err := m.DepartureAirport.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("DepartureAirport")
@@ -832,6 +839,7 @@ func (m *SailplaneFlightOutputBase) contextValidateDepartureAirport(ctx context.
 func (m *SailplaneFlightOutputBase) contextValidateLaunchMethod(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.LaunchMethod != nil {
+
 		if err := m.LaunchMethod.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("LaunchMethod")
@@ -850,6 +858,11 @@ func (m *SailplaneFlightOutputBase) contextValidateMarkers(ctx context.Context, 
 	for i := 0; i < len(m.Markers); i++ {
 
 		if m.Markers[i] != nil {
+
+			if swag.IsZero(m.Markers[i]) { // not required
+				return nil
+			}
+
 			if err := m.Markers[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("Markers" + "." + strconv.Itoa(i))
@@ -868,6 +881,7 @@ func (m *SailplaneFlightOutputBase) contextValidateMarkers(ctx context.Context, 
 func (m *SailplaneFlightOutputBase) contextValidatePilotFunction(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.PilotFunction != nil {
+
 		if err := m.PilotFunction.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("PilotFunction")
@@ -884,6 +898,7 @@ func (m *SailplaneFlightOutputBase) contextValidatePilotFunction(ctx context.Con
 func (m *SailplaneFlightOutputBase) contextValidateStatus(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Status != nil {
+
 		if err := m.Status.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("Status")

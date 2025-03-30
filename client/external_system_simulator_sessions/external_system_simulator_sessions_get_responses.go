@@ -6,6 +6,7 @@ package external_system_simulator_sessions
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"encoding/json"
 	"fmt"
 	"io"
 
@@ -30,7 +31,7 @@ func (o *ExternalSystemSimulatorSessionsGetReader) ReadResponse(response runtime
 		}
 		return result, nil
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /api/pel/public/externalsystemsimulatorsessions/{id}] ExternalSystemSimulatorSessions_Get", response, response.Code())
 	}
 }
 
@@ -39,7 +40,8 @@ func NewExternalSystemSimulatorSessionsGetOK() *ExternalSystemSimulatorSessionsG
 	return &ExternalSystemSimulatorSessionsGetOK{}
 }
 
-/* ExternalSystemSimulatorSessionsGetOK describes a response with status code 200, with default header values.
+/*
+ExternalSystemSimulatorSessionsGetOK describes a response with status code 200, with default header values.
 
 ExternalSystemSimulatorSessionsGetOK external system simulator sessions get o k
 */
@@ -47,9 +49,46 @@ type ExternalSystemSimulatorSessionsGetOK struct {
 	Payload *models.ExternalSystemSimulatorSessionOutput
 }
 
-func (o *ExternalSystemSimulatorSessionsGetOK) Error() string {
-	return fmt.Sprintf("[GET /api/pel/public/externalsystemsimulatorsessions/{id}][%d] externalSystemSimulatorSessionsGetOK  %+v", 200, o.Payload)
+// IsSuccess returns true when this external system simulator sessions get o k response has a 2xx status code
+func (o *ExternalSystemSimulatorSessionsGetOK) IsSuccess() bool {
+	return true
 }
+
+// IsRedirect returns true when this external system simulator sessions get o k response has a 3xx status code
+func (o *ExternalSystemSimulatorSessionsGetOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this external system simulator sessions get o k response has a 4xx status code
+func (o *ExternalSystemSimulatorSessionsGetOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this external system simulator sessions get o k response has a 5xx status code
+func (o *ExternalSystemSimulatorSessionsGetOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this external system simulator sessions get o k response a status code equal to that given
+func (o *ExternalSystemSimulatorSessionsGetOK) IsCode(code int) bool {
+	return code == 200
+}
+
+// Code gets the status code for the external system simulator sessions get o k response
+func (o *ExternalSystemSimulatorSessionsGetOK) Code() int {
+	return 200
+}
+
+func (o *ExternalSystemSimulatorSessionsGetOK) Error() string {
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /api/pel/public/externalsystemsimulatorsessions/{id}][%d] externalSystemSimulatorSessionsGetOK %s", 200, payload)
+}
+
+func (o *ExternalSystemSimulatorSessionsGetOK) String() string {
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /api/pel/public/externalsystemsimulatorsessions/{id}][%d] externalSystemSimulatorSessionsGetOK %s", 200, payload)
+}
+
 func (o *ExternalSystemSimulatorSessionsGetOK) GetPayload() *models.ExternalSystemSimulatorSessionOutput {
 	return o.Payload
 }

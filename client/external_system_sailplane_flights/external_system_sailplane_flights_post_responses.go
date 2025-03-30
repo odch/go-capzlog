@@ -6,6 +6,7 @@ package external_system_sailplane_flights
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"encoding/json"
 	"fmt"
 	"io"
 
@@ -30,7 +31,7 @@ func (o *ExternalSystemSailplaneFlightsPostReader) ReadResponse(response runtime
 		}
 		return result, nil
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /api/pel/public/externalsystemsailplaneflights] ExternalSystemSailplaneFlights_Post", response, response.Code())
 	}
 }
 
@@ -39,7 +40,8 @@ func NewExternalSystemSailplaneFlightsPostOK() *ExternalSystemSailplaneFlightsPo
 	return &ExternalSystemSailplaneFlightsPostOK{}
 }
 
-/* ExternalSystemSailplaneFlightsPostOK describes a response with status code 200, with default header values.
+/*
+ExternalSystemSailplaneFlightsPostOK describes a response with status code 200, with default header values.
 
 ExternalSystemSailplaneFlightsPostOK external system sailplane flights post o k
 */
@@ -47,9 +49,46 @@ type ExternalSystemSailplaneFlightsPostOK struct {
 	Payload *models.ExternalSystemSailplaneFlightOutput
 }
 
-func (o *ExternalSystemSailplaneFlightsPostOK) Error() string {
-	return fmt.Sprintf("[POST /api/pel/public/externalsystemsailplaneflights][%d] externalSystemSailplaneFlightsPostOK  %+v", 200, o.Payload)
+// IsSuccess returns true when this external system sailplane flights post o k response has a 2xx status code
+func (o *ExternalSystemSailplaneFlightsPostOK) IsSuccess() bool {
+	return true
 }
+
+// IsRedirect returns true when this external system sailplane flights post o k response has a 3xx status code
+func (o *ExternalSystemSailplaneFlightsPostOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this external system sailplane flights post o k response has a 4xx status code
+func (o *ExternalSystemSailplaneFlightsPostOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this external system sailplane flights post o k response has a 5xx status code
+func (o *ExternalSystemSailplaneFlightsPostOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this external system sailplane flights post o k response a status code equal to that given
+func (o *ExternalSystemSailplaneFlightsPostOK) IsCode(code int) bool {
+	return code == 200
+}
+
+// Code gets the status code for the external system sailplane flights post o k response
+func (o *ExternalSystemSailplaneFlightsPostOK) Code() int {
+	return 200
+}
+
+func (o *ExternalSystemSailplaneFlightsPostOK) Error() string {
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /api/pel/public/externalsystemsailplaneflights][%d] externalSystemSailplaneFlightsPostOK %s", 200, payload)
+}
+
+func (o *ExternalSystemSailplaneFlightsPostOK) String() string {
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /api/pel/public/externalsystemsailplaneflights][%d] externalSystemSailplaneFlightsPostOK %s", 200, payload)
+}
+
 func (o *ExternalSystemSailplaneFlightsPostOK) GetPayload() *models.ExternalSystemSailplaneFlightOutput {
 	return o.Payload
 }

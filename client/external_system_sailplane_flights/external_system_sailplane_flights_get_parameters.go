@@ -52,10 +52,12 @@ func NewExternalSystemSailplaneFlightsGetParamsWithHTTPClient(client *http.Clien
 	}
 }
 
-/* ExternalSystemSailplaneFlightsGetParams contains all the parameters to send to the API endpoint
-   for the external system sailplane flights get operation.
+/*
+ExternalSystemSailplaneFlightsGetParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the external system sailplane flights get operation.
+
+	Typically these are written to a http.Request.
 */
 type ExternalSystemSailplaneFlightsGetParams struct {
 

@@ -6,6 +6,7 @@ package external_system_flights
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"encoding/json"
 	"fmt"
 	"io"
 
@@ -30,7 +31,7 @@ func (o *ExternalSystemFlightsPutReader) ReadResponse(response runtime.ClientRes
 		}
 		return result, nil
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[PUT /api/pel/public/externalsystemflights/{id}] ExternalSystemFlights_Put", response, response.Code())
 	}
 }
 
@@ -39,7 +40,8 @@ func NewExternalSystemFlightsPutOK() *ExternalSystemFlightsPutOK {
 	return &ExternalSystemFlightsPutOK{}
 }
 
-/* ExternalSystemFlightsPutOK describes a response with status code 200, with default header values.
+/*
+ExternalSystemFlightsPutOK describes a response with status code 200, with default header values.
 
 ExternalSystemFlightsPutOK external system flights put o k
 */
@@ -47,9 +49,46 @@ type ExternalSystemFlightsPutOK struct {
 	Payload *models.ExternalSystemFlightOutput
 }
 
-func (o *ExternalSystemFlightsPutOK) Error() string {
-	return fmt.Sprintf("[PUT /api/pel/public/externalsystemflights/{id}][%d] externalSystemFlightsPutOK  %+v", 200, o.Payload)
+// IsSuccess returns true when this external system flights put o k response has a 2xx status code
+func (o *ExternalSystemFlightsPutOK) IsSuccess() bool {
+	return true
 }
+
+// IsRedirect returns true when this external system flights put o k response has a 3xx status code
+func (o *ExternalSystemFlightsPutOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this external system flights put o k response has a 4xx status code
+func (o *ExternalSystemFlightsPutOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this external system flights put o k response has a 5xx status code
+func (o *ExternalSystemFlightsPutOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this external system flights put o k response a status code equal to that given
+func (o *ExternalSystemFlightsPutOK) IsCode(code int) bool {
+	return code == 200
+}
+
+// Code gets the status code for the external system flights put o k response
+func (o *ExternalSystemFlightsPutOK) Code() int {
+	return 200
+}
+
+func (o *ExternalSystemFlightsPutOK) Error() string {
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /api/pel/public/externalsystemflights/{id}][%d] externalSystemFlightsPutOK %s", 200, payload)
+}
+
+func (o *ExternalSystemFlightsPutOK) String() string {
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /api/pel/public/externalsystemflights/{id}][%d] externalSystemFlightsPutOK %s", 200, payload)
+}
+
 func (o *ExternalSystemFlightsPutOK) GetPayload() *models.ExternalSystemFlightOutput {
 	return o.Payload
 }

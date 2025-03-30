@@ -823,6 +823,11 @@ func (m *BalloonFlightOutputBase) ContextValidate(ctx context.Context, formats s
 func (m *BalloonFlightOutputBase) contextValidateAircraft(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Aircraft != nil {
+
+		if swag.IsZero(m.Aircraft) { // not required
+			return nil
+		}
+
 		if err := m.Aircraft.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("Aircraft")
@@ -846,6 +851,11 @@ func (m *BalloonFlightOutputBase) contextValidateMarkers(ctx context.Context, fo
 	for i := 0; i < len(m.Markers); i++ {
 
 		if m.Markers[i] != nil {
+
+			if swag.IsZero(m.Markers[i]) { // not required
+				return nil
+			}
+
 			if err := m.Markers[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("Markers" + "." + strconv.Itoa(i))
@@ -864,6 +874,7 @@ func (m *BalloonFlightOutputBase) contextValidateMarkers(ctx context.Context, fo
 func (m *BalloonFlightOutputBase) contextValidatePilotFunction(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.PilotFunction != nil {
+
 		if err := m.PilotFunction.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("PilotFunction")
@@ -880,6 +891,7 @@ func (m *BalloonFlightOutputBase) contextValidatePilotFunction(ctx context.Conte
 func (m *BalloonFlightOutputBase) contextValidateStatus(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Status != nil {
+
 		if err := m.Status.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("Status")

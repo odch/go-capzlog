@@ -54,10 +54,12 @@ func NewExternalSystemFlightsPostParamsWithHTTPClient(client *http.Client) *Exte
 	}
 }
 
-/* ExternalSystemFlightsPostParams contains all the parameters to send to the API endpoint
-   for the external system flights post operation.
+/*
+ExternalSystemFlightsPostParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the external system flights post operation.
+
+	Typically these are written to a http.Request.
 */
 type ExternalSystemFlightsPostParams struct {
 

@@ -314,6 +314,11 @@ func (m *SimulatorSessionInputBase) contextValidateMarkers(ctx context.Context, 
 	for i := 0; i < len(m.Markers); i++ {
 
 		if m.Markers[i] != nil {
+
+			if swag.IsZero(m.Markers[i]) { // not required
+				return nil
+			}
+
 			if err := m.Markers[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("Markers" + "." + strconv.Itoa(i))
@@ -332,6 +337,7 @@ func (m *SimulatorSessionInputBase) contextValidateMarkers(ctx context.Context, 
 func (m *SimulatorSessionInputBase) contextValidatePilotFunction(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.PilotFunction != nil {
+
 		if err := m.PilotFunction.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("PilotFunction")
@@ -348,6 +354,11 @@ func (m *SimulatorSessionInputBase) contextValidatePilotFunction(ctx context.Con
 func (m *SimulatorSessionInputBase) contextValidateSimulator(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Simulator != nil {
+
+		if swag.IsZero(m.Simulator) { // not required
+			return nil
+		}
+
 		if err := m.Simulator.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("Simulator")

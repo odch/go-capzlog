@@ -29,7 +29,7 @@ func (o *ExternalSystemSimulatorSessionsPostMultipleReader) ReadResponse(respons
 		}
 		return result, nil
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /api/pel/public/externalsystemsimulatorSessions/PostMultiple] ExternalSystemSimulatorSessions_PostMultiple", response, response.Code())
 	}
 }
 
@@ -41,7 +41,8 @@ func NewExternalSystemSimulatorSessionsPostMultipleOK(writer io.Writer) *Externa
 	}
 }
 
-/* ExternalSystemSimulatorSessionsPostMultipleOK describes a response with status code 200, with default header values.
+/*
+ExternalSystemSimulatorSessionsPostMultipleOK describes a response with status code 200, with default header values.
 
 ExternalSystemSimulatorSessionsPostMultipleOK external system simulator sessions post multiple o k
 */
@@ -49,9 +50,44 @@ type ExternalSystemSimulatorSessionsPostMultipleOK struct {
 	Payload io.Writer
 }
 
-func (o *ExternalSystemSimulatorSessionsPostMultipleOK) Error() string {
-	return fmt.Sprintf("[POST /api/pel/public/externalsystemsimulatorSessions/PostMultiple][%d] externalSystemSimulatorSessionsPostMultipleOK  %+v", 200, o.Payload)
+// IsSuccess returns true when this external system simulator sessions post multiple o k response has a 2xx status code
+func (o *ExternalSystemSimulatorSessionsPostMultipleOK) IsSuccess() bool {
+	return true
 }
+
+// IsRedirect returns true when this external system simulator sessions post multiple o k response has a 3xx status code
+func (o *ExternalSystemSimulatorSessionsPostMultipleOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this external system simulator sessions post multiple o k response has a 4xx status code
+func (o *ExternalSystemSimulatorSessionsPostMultipleOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this external system simulator sessions post multiple o k response has a 5xx status code
+func (o *ExternalSystemSimulatorSessionsPostMultipleOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this external system simulator sessions post multiple o k response a status code equal to that given
+func (o *ExternalSystemSimulatorSessionsPostMultipleOK) IsCode(code int) bool {
+	return code == 200
+}
+
+// Code gets the status code for the external system simulator sessions post multiple o k response
+func (o *ExternalSystemSimulatorSessionsPostMultipleOK) Code() int {
+	return 200
+}
+
+func (o *ExternalSystemSimulatorSessionsPostMultipleOK) Error() string {
+	return fmt.Sprintf("[POST /api/pel/public/externalsystemsimulatorSessions/PostMultiple][%d] externalSystemSimulatorSessionsPostMultipleOK", 200)
+}
+
+func (o *ExternalSystemSimulatorSessionsPostMultipleOK) String() string {
+	return fmt.Sprintf("[POST /api/pel/public/externalsystemsimulatorSessions/PostMultiple][%d] externalSystemSimulatorSessionsPostMultipleOK", 200)
+}
+
 func (o *ExternalSystemSimulatorSessionsPostMultipleOK) GetPayload() io.Writer {
 	return o.Payload
 }

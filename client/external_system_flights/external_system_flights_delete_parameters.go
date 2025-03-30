@@ -52,10 +52,12 @@ func NewExternalSystemFlightsDeleteParamsWithHTTPClient(client *http.Client) *Ex
 	}
 }
 
-/* ExternalSystemFlightsDeleteParams contains all the parameters to send to the API endpoint
-   for the external system flights delete operation.
+/*
+ExternalSystemFlightsDeleteParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the external system flights delete operation.
+
+	Typically these are written to a http.Request.
 */
 type ExternalSystemFlightsDeleteParams struct {
 

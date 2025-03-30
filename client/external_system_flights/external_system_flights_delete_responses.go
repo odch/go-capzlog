@@ -29,7 +29,7 @@ func (o *ExternalSystemFlightsDeleteReader) ReadResponse(response runtime.Client
 		}
 		return result, nil
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[DELETE /api/pel/public/externalsystemflights/{id}] ExternalSystemFlights_Delete", response, response.Code())
 	}
 }
 
@@ -41,7 +41,8 @@ func NewExternalSystemFlightsDeleteOK(writer io.Writer) *ExternalSystemFlightsDe
 	}
 }
 
-/* ExternalSystemFlightsDeleteOK describes a response with status code 200, with default header values.
+/*
+ExternalSystemFlightsDeleteOK describes a response with status code 200, with default header values.
 
 ExternalSystemFlightsDeleteOK external system flights delete o k
 */
@@ -49,9 +50,44 @@ type ExternalSystemFlightsDeleteOK struct {
 	Payload io.Writer
 }
 
-func (o *ExternalSystemFlightsDeleteOK) Error() string {
-	return fmt.Sprintf("[DELETE /api/pel/public/externalsystemflights/{id}][%d] externalSystemFlightsDeleteOK  %+v", 200, o.Payload)
+// IsSuccess returns true when this external system flights delete o k response has a 2xx status code
+func (o *ExternalSystemFlightsDeleteOK) IsSuccess() bool {
+	return true
 }
+
+// IsRedirect returns true when this external system flights delete o k response has a 3xx status code
+func (o *ExternalSystemFlightsDeleteOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this external system flights delete o k response has a 4xx status code
+func (o *ExternalSystemFlightsDeleteOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this external system flights delete o k response has a 5xx status code
+func (o *ExternalSystemFlightsDeleteOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this external system flights delete o k response a status code equal to that given
+func (o *ExternalSystemFlightsDeleteOK) IsCode(code int) bool {
+	return code == 200
+}
+
+// Code gets the status code for the external system flights delete o k response
+func (o *ExternalSystemFlightsDeleteOK) Code() int {
+	return 200
+}
+
+func (o *ExternalSystemFlightsDeleteOK) Error() string {
+	return fmt.Sprintf("[DELETE /api/pel/public/externalsystemflights/{id}][%d] externalSystemFlightsDeleteOK", 200)
+}
+
+func (o *ExternalSystemFlightsDeleteOK) String() string {
+	return fmt.Sprintf("[DELETE /api/pel/public/externalsystemflights/{id}][%d] externalSystemFlightsDeleteOK", 200)
+}
+
 func (o *ExternalSystemFlightsDeleteOK) GetPayload() io.Writer {
 	return o.Payload
 }

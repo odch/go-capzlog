@@ -52,10 +52,12 @@ func NewExternalSystemBalloonFlightsGetParamsWithHTTPClient(client *http.Client)
 	}
 }
 
-/* ExternalSystemBalloonFlightsGetParams contains all the parameters to send to the API endpoint
-   for the external system balloon flights get operation.
+/*
+ExternalSystemBalloonFlightsGetParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the external system balloon flights get operation.
+
+	Typically these are written to a http.Request.
 */
 type ExternalSystemBalloonFlightsGetParams struct {
 

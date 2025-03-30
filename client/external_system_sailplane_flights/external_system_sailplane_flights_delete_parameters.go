@@ -52,10 +52,12 @@ func NewExternalSystemSailplaneFlightsDeleteParamsWithHTTPClient(client *http.Cl
 	}
 }
 
-/* ExternalSystemSailplaneFlightsDeleteParams contains all the parameters to send to the API endpoint
-   for the external system sailplane flights delete operation.
+/*
+ExternalSystemSailplaneFlightsDeleteParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the external system sailplane flights delete operation.
+
+	Typically these are written to a http.Request.
 */
 type ExternalSystemSailplaneFlightsDeleteParams struct {
 

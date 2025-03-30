@@ -29,7 +29,7 @@ func (o *ExternalSystemBalloonFlightsDeleteReader) ReadResponse(response runtime
 		}
 		return result, nil
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[DELETE /api/pel/public/externalsystemballoonflights/{id}] ExternalSystemBalloonFlights_Delete", response, response.Code())
 	}
 }
 
@@ -41,7 +41,8 @@ func NewExternalSystemBalloonFlightsDeleteOK(writer io.Writer) *ExternalSystemBa
 	}
 }
 
-/* ExternalSystemBalloonFlightsDeleteOK describes a response with status code 200, with default header values.
+/*
+ExternalSystemBalloonFlightsDeleteOK describes a response with status code 200, with default header values.
 
 ExternalSystemBalloonFlightsDeleteOK external system balloon flights delete o k
 */
@@ -49,9 +50,44 @@ type ExternalSystemBalloonFlightsDeleteOK struct {
 	Payload io.Writer
 }
 
-func (o *ExternalSystemBalloonFlightsDeleteOK) Error() string {
-	return fmt.Sprintf("[DELETE /api/pel/public/externalsystemballoonflights/{id}][%d] externalSystemBalloonFlightsDeleteOK  %+v", 200, o.Payload)
+// IsSuccess returns true when this external system balloon flights delete o k response has a 2xx status code
+func (o *ExternalSystemBalloonFlightsDeleteOK) IsSuccess() bool {
+	return true
 }
+
+// IsRedirect returns true when this external system balloon flights delete o k response has a 3xx status code
+func (o *ExternalSystemBalloonFlightsDeleteOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this external system balloon flights delete o k response has a 4xx status code
+func (o *ExternalSystemBalloonFlightsDeleteOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this external system balloon flights delete o k response has a 5xx status code
+func (o *ExternalSystemBalloonFlightsDeleteOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this external system balloon flights delete o k response a status code equal to that given
+func (o *ExternalSystemBalloonFlightsDeleteOK) IsCode(code int) bool {
+	return code == 200
+}
+
+// Code gets the status code for the external system balloon flights delete o k response
+func (o *ExternalSystemBalloonFlightsDeleteOK) Code() int {
+	return 200
+}
+
+func (o *ExternalSystemBalloonFlightsDeleteOK) Error() string {
+	return fmt.Sprintf("[DELETE /api/pel/public/externalsystemballoonflights/{id}][%d] externalSystemBalloonFlightsDeleteOK", 200)
+}
+
+func (o *ExternalSystemBalloonFlightsDeleteOK) String() string {
+	return fmt.Sprintf("[DELETE /api/pel/public/externalsystemballoonflights/{id}][%d] externalSystemBalloonFlightsDeleteOK", 200)
+}
+
 func (o *ExternalSystemBalloonFlightsDeleteOK) GetPayload() io.Writer {
 	return o.Payload
 }

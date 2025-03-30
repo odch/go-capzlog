@@ -54,10 +54,12 @@ func NewExternalSystemSimulatorSessionsPutParamsWithHTTPClient(client *http.Clie
 	}
 }
 
-/* ExternalSystemSimulatorSessionsPutParams contains all the parameters to send to the API endpoint
-   for the external system simulator sessions put operation.
+/*
+ExternalSystemSimulatorSessionsPutParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the external system simulator sessions put operation.
+
+	Typically these are written to a http.Request.
 */
 type ExternalSystemSimulatorSessionsPutParams struct {
 

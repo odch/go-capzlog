@@ -29,7 +29,7 @@ func (o *ExternalSystemSailplaneFlightsDeleteReader) ReadResponse(response runti
 		}
 		return result, nil
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[DELETE /api/pel/public/externalsystemsailplaneflights/{id}] ExternalSystemSailplaneFlights_Delete", response, response.Code())
 	}
 }
 
@@ -41,7 +41,8 @@ func NewExternalSystemSailplaneFlightsDeleteOK(writer io.Writer) *ExternalSystem
 	}
 }
 
-/* ExternalSystemSailplaneFlightsDeleteOK describes a response with status code 200, with default header values.
+/*
+ExternalSystemSailplaneFlightsDeleteOK describes a response with status code 200, with default header values.
 
 ExternalSystemSailplaneFlightsDeleteOK external system sailplane flights delete o k
 */
@@ -49,9 +50,44 @@ type ExternalSystemSailplaneFlightsDeleteOK struct {
 	Payload io.Writer
 }
 
-func (o *ExternalSystemSailplaneFlightsDeleteOK) Error() string {
-	return fmt.Sprintf("[DELETE /api/pel/public/externalsystemsailplaneflights/{id}][%d] externalSystemSailplaneFlightsDeleteOK  %+v", 200, o.Payload)
+// IsSuccess returns true when this external system sailplane flights delete o k response has a 2xx status code
+func (o *ExternalSystemSailplaneFlightsDeleteOK) IsSuccess() bool {
+	return true
 }
+
+// IsRedirect returns true when this external system sailplane flights delete o k response has a 3xx status code
+func (o *ExternalSystemSailplaneFlightsDeleteOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this external system sailplane flights delete o k response has a 4xx status code
+func (o *ExternalSystemSailplaneFlightsDeleteOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this external system sailplane flights delete o k response has a 5xx status code
+func (o *ExternalSystemSailplaneFlightsDeleteOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this external system sailplane flights delete o k response a status code equal to that given
+func (o *ExternalSystemSailplaneFlightsDeleteOK) IsCode(code int) bool {
+	return code == 200
+}
+
+// Code gets the status code for the external system sailplane flights delete o k response
+func (o *ExternalSystemSailplaneFlightsDeleteOK) Code() int {
+	return 200
+}
+
+func (o *ExternalSystemSailplaneFlightsDeleteOK) Error() string {
+	return fmt.Sprintf("[DELETE /api/pel/public/externalsystemsailplaneflights/{id}][%d] externalSystemSailplaneFlightsDeleteOK", 200)
+}
+
+func (o *ExternalSystemSailplaneFlightsDeleteOK) String() string {
+	return fmt.Sprintf("[DELETE /api/pel/public/externalsystemsailplaneflights/{id}][%d] externalSystemSailplaneFlightsDeleteOK", 200)
+}
+
 func (o *ExternalSystemSailplaneFlightsDeleteOK) GetPayload() io.Writer {
 	return o.Payload
 }

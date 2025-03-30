@@ -1118,6 +1118,11 @@ func (m *FlightOutputBase) ContextValidate(ctx context.Context, formats strfmt.R
 func (m *FlightOutputBase) contextValidateAircraft(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Aircraft != nil {
+
+		if swag.IsZero(m.Aircraft) { // not required
+			return nil
+		}
+
 		if err := m.Aircraft.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("Aircraft")
@@ -1134,6 +1139,7 @@ func (m *FlightOutputBase) contextValidateAircraft(ctx context.Context, formats 
 func (m *FlightOutputBase) contextValidateArrivalAirport(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.ArrivalAirport != nil {
+
 		if err := m.ArrivalAirport.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("ArrivalAirport")
@@ -1150,6 +1156,7 @@ func (m *FlightOutputBase) contextValidateArrivalAirport(ctx context.Context, fo
 func (m *FlightOutputBase) contextValidateDayNightSequence(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.DayNightSequence != nil {
+
 		if err := m.DayNightSequence.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("DayNightSequence")
@@ -1166,6 +1173,7 @@ func (m *FlightOutputBase) contextValidateDayNightSequence(ctx context.Context, 
 func (m *FlightOutputBase) contextValidateDepartureAirport(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.DepartureAirport != nil {
+
 		if err := m.DepartureAirport.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("DepartureAirport")
@@ -1184,6 +1192,11 @@ func (m *FlightOutputBase) contextValidateMarkers(ctx context.Context, formats s
 	for i := 0; i < len(m.Markers); i++ {
 
 		if m.Markers[i] != nil {
+
+			if swag.IsZero(m.Markers[i]) { // not required
+				return nil
+			}
+
 			if err := m.Markers[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("Markers" + "." + strconv.Itoa(i))
@@ -1202,6 +1215,7 @@ func (m *FlightOutputBase) contextValidateMarkers(ctx context.Context, formats s
 func (m *FlightOutputBase) contextValidatePilotFunction(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.PilotFunction != nil {
+
 		if err := m.PilotFunction.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("PilotFunction")
@@ -1218,6 +1232,7 @@ func (m *FlightOutputBase) contextValidatePilotFunction(ctx context.Context, for
 func (m *FlightOutputBase) contextValidateStatus(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Status != nil {
+
 		if err := m.Status.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("Status")
@@ -1234,6 +1249,7 @@ func (m *FlightOutputBase) contextValidateStatus(ctx context.Context, formats st
 func (m *FlightOutputBase) contextValidateTypeOfFlight(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.TypeOfFlight != nil {
+
 		if err := m.TypeOfFlight.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("TypeOfFlight")

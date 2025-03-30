@@ -98,6 +98,10 @@ func (m *SimulatorInput) ContextValidate(ctx context.Context, formats strfmt.Reg
 
 func (m *SimulatorInput) contextValidateFlightSimulationTrainingDeviceType(ctx context.Context, formats strfmt.Registry) error {
 
+	if swag.IsZero(m.FlightSimulationTrainingDeviceType) { // not required
+		return nil
+	}
+
 	if err := m.FlightSimulationTrainingDeviceType.ContextValidate(ctx, formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("FlightSimulationTrainingDeviceType")
