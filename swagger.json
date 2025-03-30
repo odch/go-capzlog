@@ -1494,11 +1494,7 @@
         },
         "DayNightSequence": {
           "description": "Only flights in the TMG category can have night time and thus also day/night sequence different than day",
-          "allOf": [
-            {
-              "$ref": "#/definitions/DayNightSequences"
-            }
-          ]
+          "$ref": "#/definitions/DayNightSequences"
         },
         "DayTakeoffs": {
           "type": "integer",
@@ -1762,11 +1758,7 @@
         },
         "DayNightSequence": {
           "description": "The day/night sequence of the SailplaneFlight. Required if AutoCalculateDayNightTime is false",
-          "allOf": [
-            {
-              "$ref": "#/definitions/DayNightSequences"
-            }
-          ]
+          "$ref": "#/definitions/DayNightSequences"
         },
         "Takeoffs": {
           "type": "integer",
@@ -1963,11 +1955,7 @@
         },
         "DayNightSequence": {
           "description": "The day/night sequence of the BalloonFlight",
-          "allOf": [
-            {
-              "$ref": "#/definitions/DayNightSequences"
-            }
-          ]
+          "$ref": "#/definitions/DayNightSequences"
         },
         "MorningTwilightTime": {
           "type": "string",
@@ -2212,11 +2200,7 @@
         },
         "DayNightSequence": {
           "description": "The day/night sequence of the BalloonFlight",
-          "allOf": [
-            {
-              "$ref": "#/definitions/DayNightSequences"
-            }
-          ]
+          "$ref": "#/definitions/DayNightSequences"
         },
         "MorningTwilightTime": {
           "type": "string",
@@ -2757,11 +2741,7 @@
         },
         "DayNightSequence": {
           "description": "The day/night sequence of the flight. Required if AutoCalculateDayNightTime is false",
-          "allOf": [
-            {
-              "$ref": "#/definitions/DayNightSequences"
-            }
-          ]
+          "$ref": "#/definitions/DayNightSequences"
         },
         "Takeoffs": {
           "type": "integer",

@@ -58,9 +58,7 @@ type FlightInputBase struct {
 	Date *string `json:"Date"`
 
 	// The day/night sequence of the flight. Required if AutoCalculateDayNightTime is false
-	DayNightSequence struct {
-		DayNightSequences
-	} `json:"DayNightSequence,omitempty"`
+	DayNightSequence DayNightSequences `json:"DayNightSequence,omitempty"`
 
 	// departure airport
 	// Required: true
@@ -396,6 +394,15 @@ func (m *FlightInputBase) validateDate(formats strfmt.Registry) error {
 func (m *FlightInputBase) validateDayNightSequence(formats strfmt.Registry) error {
 	if swag.IsZero(m.DayNightSequence) { // not required
 		return nil
+	}
+
+	if err := m.DayNightSequence.Validate(formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("DayNightSequence")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("DayNightSequence")
+		}
+		return err
 	}
 
 	return nil
@@ -769,6 +776,19 @@ func (m *FlightInputBase) contextValidateArrivalAirport(ctx context.Context, for
 }
 
 func (m *FlightInputBase) contextValidateDayNightSequence(ctx context.Context, formats strfmt.Registry) error {
+
+	if swag.IsZero(m.DayNightSequence) { // not required
+		return nil
+	}
+
+	if err := m.DayNightSequence.ContextValidate(ctx, formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("DayNightSequence")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("DayNightSequence")
+		}
+		return err
+	}
 
 	return nil
 }

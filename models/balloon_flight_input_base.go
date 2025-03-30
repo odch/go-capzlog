@@ -40,9 +40,7 @@ type BalloonFlightInputBase struct {
 
 	// The day/night sequence of the BalloonFlight
 	// Required: true
-	DayNightSequence struct {
-		DayNightSequences
-	} `json:"DayNightSequence"`
+	DayNightSequence *DayNightSequences `json:"DayNightSequence"`
 
 	// departure
 	// Required: true
@@ -255,6 +253,25 @@ func (m *BalloonFlightInputBase) validateDate(formats strfmt.Registry) error {
 }
 
 func (m *BalloonFlightInputBase) validateDayNightSequence(formats strfmt.Registry) error {
+
+	if err := validate.Required("DayNightSequence", "body", m.DayNightSequence); err != nil {
+		return err
+	}
+
+	if err := validate.Required("DayNightSequence", "body", m.DayNightSequence); err != nil {
+		return err
+	}
+
+	if m.DayNightSequence != nil {
+		if err := m.DayNightSequence.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("DayNightSequence")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("DayNightSequence")
+			}
+			return err
+		}
+	}
 
 	return nil
 }
@@ -509,6 +526,18 @@ func (m *BalloonFlightInputBase) contextValidateAircraft(ctx context.Context, fo
 }
 
 func (m *BalloonFlightInputBase) contextValidateDayNightSequence(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.DayNightSequence != nil {
+
+		if err := m.DayNightSequence.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("DayNightSequence")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("DayNightSequence")
+			}
+			return err
+		}
+	}
 
 	return nil
 }
