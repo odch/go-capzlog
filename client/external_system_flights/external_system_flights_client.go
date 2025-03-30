@@ -6,8 +6,10 @@ package external_system_flights
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"encoding/json"
 	"fmt"
 	"io"
+	"log"
 
 	"github.com/go-openapi/runtime"
 	httptransport "github.com/go-openapi/runtime/client"
@@ -156,6 +158,10 @@ func (a *Client) ExternalSystemFlightsPost(params *ExternalSystemFlightsPostPara
 	if params == nil {
 		params = NewExternalSystemFlightsPostParams()
 	}
+
+	jsonData, _ := json.MarshalIndent(params, "", "  ")
+	log.Printf("posting data to ExternalSystemFlights_Post: %s", jsonData)
+
 	op := &runtime.ClientOperation{
 		ID:                 "ExternalSystemFlights_Post",
 		Method:             "POST",
