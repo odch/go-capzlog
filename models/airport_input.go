@@ -7,6 +7,7 @@ package models
 
 import (
 	"context"
+	"encoding/json"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
@@ -29,9 +30,8 @@ type AirportInput struct {
 	CountryAlpha2 string `json:"CountryAlpha2,omitempty"`
 
 	// The type of Daylight Saving Time observed. Required for new/non-existing airports. Ignored for existing airports
-	DST struct {
-		DST
-	} `json:"DST,omitempty"`
+	// Enum: ["Unknown","Europe","NorthAmerica","SouthAmerica","Australia","NewZealand","None"]
+	DST string `json:"DST,omitempty"`
 
 	// A free text name of the airport or landing location. Shall only be used if the ICAO code is a no location indicator ZZZZ or abXX where ab is the country prefix, e.g. LSXX for no location indicator in Switzerland
 	FreeText string `json:"FreeText,omitempty"`
@@ -72,9 +72,58 @@ func (m *AirportInput) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
+var airportInputTypeDSTPropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["Unknown","Europe","NorthAmerica","SouthAmerica","Australia","NewZealand","None"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		airportInputTypeDSTPropEnum = append(airportInputTypeDSTPropEnum, v)
+	}
+}
+
+const (
+
+	// AirportInputDSTUnknown captures enum value "Unknown"
+	AirportInputDSTUnknown string = "Unknown"
+
+	// AirportInputDSTEurope captures enum value "Europe"
+	AirportInputDSTEurope string = "Europe"
+
+	// AirportInputDSTNorthAmerica captures enum value "NorthAmerica"
+	AirportInputDSTNorthAmerica string = "NorthAmerica"
+
+	// AirportInputDSTSouthAmerica captures enum value "SouthAmerica"
+	AirportInputDSTSouthAmerica string = "SouthAmerica"
+
+	// AirportInputDSTAustralia captures enum value "Australia"
+	AirportInputDSTAustralia string = "Australia"
+
+	// AirportInputDSTNewZealand captures enum value "NewZealand"
+	AirportInputDSTNewZealand string = "NewZealand"
+
+	// AirportInputDSTNone captures enum value "None"
+	AirportInputDSTNone string = "None"
+)
+
+// prop value enum
+func (m *AirportInput) validateDSTEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, airportInputTypeDSTPropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (m *AirportInput) validateDST(formats strfmt.Registry) error {
 	if swag.IsZero(m.DST) { // not required
 		return nil
+	}
+
+	// value enum
+	if err := m.validateDSTEnum("DST", "body", m.DST); err != nil {
+		return err
 	}
 
 	return nil
@@ -93,22 +142,8 @@ func (m *AirportInput) validateICAOCode(formats strfmt.Registry) error {
 	return nil
 }
 
-// ContextValidate validate this airport input based on the context it is used
+// ContextValidate validates this airport input based on context it is used
 func (m *AirportInput) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := m.contextValidateDST(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (m *AirportInput) contextValidateDST(ctx context.Context, formats strfmt.Registry) error {
-
 	return nil
 }
 

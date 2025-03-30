@@ -1829,37 +1829,19 @@
           "format": "decimal"
         },
         "DST": {
+          "type": "string",
           "description": "The type of Daylight Saving Time observed. Required for new/non-existing airports. Ignored for existing airports",
-          "allOf": [
-            {
-              "$ref": "#/definitions/DST"
-            }
+          "enum": [
+            "Unknown",
+            "Europe",
+            "NorthAmerica",
+            "SouthAmerica",
+            "Australia",
+            "NewZealand",
+            "None"
           ]
         }
       }
-    },
-    "DST": {
-      "type": "string",
-      "description": "",
-      "x-enumFlags": true,
-      "x-enumNames": [
-        "Unknown",
-        "Europe",
-        "NorthAmerica",
-        "SouthAmerica",
-        "Australia",
-        "NewZealand",
-        "None"
-      ],
-      "enum": [
-        "Unknown",
-        "Europe",
-        "NorthAmerica",
-        "SouthAmerica",
-        "Australia",
-        "NewZealand",
-        "None"
-      ]
     },
     "SailplaneInput": {
       "type": "object",
